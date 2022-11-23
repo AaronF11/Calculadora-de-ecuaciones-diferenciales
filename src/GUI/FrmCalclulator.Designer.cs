@@ -41,7 +41,8 @@
             this.RtbPantalla.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RtbPantalla.Size = new System.Drawing.Size(410, 136);
             this.RtbPantalla.TabIndex = 0;
-            this.RtbPantalla.Text = "";
+            this.RtbPantalla.Text = "x^2+5x+3=1\n x^2+5x+3=1";
+            this.RtbPantalla.ZoomFactor = 2F;
             // 
             // FrmPrincipal
             // 
