@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Calculadora_de_ecuaciones_diferenciales
 {
-    public partial class Form1 : Form
+    public partial class FrmPrincipal : Form
     {
-        public Form1()
+        public FrmPrincipal()
         {
             InitializeComponent();
         }
