@@ -38,6 +38,11 @@
             this.BtnPotencia = new System.Windows.Forms.Button();
             this.Btn_e = new System.Windows.Forms.Button();
             this.Btn = new System.Windows.Forms.Button();
+            this.Btnpiπ = new System.Windows.Forms.Button();
+            this.BtnMayorQue = new System.Windows.Forms.Button();
+            this.BtnMenorQue = new System.Windows.Forms.Button();
+            this.BtnMayorOIgualQue = new System.Windows.Forms.Button();
+            this.BtnMenorOIgualQue = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RtbPantalla
@@ -46,7 +51,7 @@
             this.RtbPantalla.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RtbPantalla.Dock = System.Windows.Forms.DockStyle.Top;
             this.RtbPantalla.Location = new System.Drawing.Point(15, 16);
-            this.RtbPantalla.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RtbPantalla.Margin = new System.Windows.Forms.Padding(2);
             this.RtbPantalla.Name = "RtbPantalla";
             this.RtbPantalla.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RtbPantalla.Size = new System.Drawing.Size(264, 110);
@@ -61,7 +66,7 @@
             this.BtnLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLog.ForeColor = System.Drawing.Color.White;
             this.BtnLog.Location = new System.Drawing.Point(15, 146);
-            this.BtnLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnLog.Margin = new System.Windows.Forms.Padding(2);
             this.BtnLog.Name = "BtnLog";
             this.BtnLog.Size = new System.Drawing.Size(41, 46);
             this.BtnLog.TabIndex = 1;
@@ -75,7 +80,7 @@
             this.BtnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDel.ForeColor = System.Drawing.Color.White;
             this.BtnDel.Location = new System.Drawing.Point(124, 146);
-            this.BtnDel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnDel.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDel.Name = "BtnDel";
             this.BtnDel.Size = new System.Drawing.Size(41, 46);
             this.BtnDel.TabIndex = 2;
@@ -89,7 +94,7 @@
             this.BtnClc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnClc.ForeColor = System.Drawing.Color.White;
             this.BtnClc.Location = new System.Drawing.Point(70, 146);
-            this.BtnClc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnClc.Margin = new System.Windows.Forms.Padding(2);
             this.BtnClc.Name = "BtnClc";
             this.BtnClc.Size = new System.Drawing.Size(41, 46);
             this.BtnClc.TabIndex = 3;
@@ -103,7 +108,7 @@
             this.BtnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCalcular.ForeColor = System.Drawing.Color.White;
             this.BtnCalcular.Location = new System.Drawing.Point(182, 146);
-            this.BtnCalcular.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnCalcular.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCalcular.Name = "BtnCalcular";
             this.BtnCalcular.Size = new System.Drawing.Size(97, 46);
             this.BtnCalcular.TabIndex = 4;
@@ -180,12 +185,87 @@
             this.Btn.Text = "|---|";
             this.Btn.UseVisualStyleBackColor = false;
             // 
+            // Btnpiπ
+            // 
+            this.Btnpiπ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.Btnpiπ.FlatAppearance.BorderSize = 0;
+            this.Btnpiπ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btnpiπ.ForeColor = System.Drawing.Color.White;
+            this.Btnpiπ.Location = new System.Drawing.Point(15, 248);
+            this.Btnpiπ.Margin = new System.Windows.Forms.Padding(2);
+            this.Btnpiπ.Name = "Btnpiπ";
+            this.Btnpiπ.Size = new System.Drawing.Size(41, 23);
+            this.Btnpiπ.TabIndex = 10;
+            this.Btnpiπ.Text = "π";
+            this.Btnpiπ.UseVisualStyleBackColor = false;
+            // 
+            // BtnMayorQue
+            // 
+            this.BtnMayorQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnMayorQue.FlatAppearance.BorderSize = 0;
+            this.BtnMayorQue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMayorQue.ForeColor = System.Drawing.Color.White;
+            this.BtnMayorQue.Location = new System.Drawing.Point(70, 248);
+            this.BtnMayorQue.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMayorQue.Name = "BtnMayorQue";
+            this.BtnMayorQue.Size = new System.Drawing.Size(41, 23);
+            this.BtnMayorQue.TabIndex = 11;
+            this.BtnMayorQue.Text = ">";
+            this.BtnMayorQue.UseVisualStyleBackColor = false;
+            // 
+            // BtnMenorQue
+            // 
+            this.BtnMenorQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnMenorQue.FlatAppearance.BorderSize = 0;
+            this.BtnMenorQue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMenorQue.ForeColor = System.Drawing.Color.White;
+            this.BtnMenorQue.Location = new System.Drawing.Point(124, 248);
+            this.BtnMenorQue.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMenorQue.Name = "BtnMenorQue";
+            this.BtnMenorQue.Size = new System.Drawing.Size(41, 23);
+            this.BtnMenorQue.TabIndex = 12;
+            this.BtnMenorQue.Text = "<";
+            this.BtnMenorQue.UseVisualStyleBackColor = false;
+            // 
+            // BtnMayorOIgualQue
+            // 
+            this.BtnMayorOIgualQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnMayorOIgualQue.FlatAppearance.BorderSize = 0;
+            this.BtnMayorOIgualQue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMayorOIgualQue.ForeColor = System.Drawing.Color.White;
+            this.BtnMayorOIgualQue.Location = new System.Drawing.Point(182, 248);
+            this.BtnMayorOIgualQue.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMayorOIgualQue.Name = "BtnMayorOIgualQue";
+            this.BtnMayorOIgualQue.Size = new System.Drawing.Size(41, 23);
+            this.BtnMayorOIgualQue.TabIndex = 13;
+            this.BtnMayorOIgualQue.Text = "≥";
+            this.BtnMayorOIgualQue.UseVisualStyleBackColor = false;
+            // 
+            // BtnMenorOIgualQue
+            // 
+            this.BtnMenorOIgualQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnMenorOIgualQue.FlatAppearance.BorderSize = 0;
+            this.BtnMenorOIgualQue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMenorOIgualQue.ForeColor = System.Drawing.Color.White;
+            this.BtnMenorOIgualQue.Location = new System.Drawing.Point(238, 248);
+            this.BtnMenorOIgualQue.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMenorOIgualQue.Name = "BtnMenorOIgualQue";
+            this.BtnMenorOIgualQue.Size = new System.Drawing.Size(41, 23);
+            this.BtnMenorOIgualQue.TabIndex = 14;
+            this.BtnMenorOIgualQue.Text = "≤";
+            this.BtnMenorOIgualQue.UseVisualStyleBackColor = false;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(294, 640);
+            this.Controls.Add(this.BtnMenorOIgualQue);
+            this.Controls.Add(this.BtnMayorOIgualQue);
+            this.Controls.Add(this.BtnMenorQue);
+            this.Controls.Add(this.BtnMayorQue);
+            this.Controls.Add(this.Btnpiπ);
             this.Controls.Add(this.Btn);
             this.Controls.Add(this.Btn_e);
             this.Controls.Add(this.BtnPotencia);
@@ -197,10 +277,11 @@
             this.Controls.Add(this.BtnLog);
             this.Controls.Add(this.RtbPantalla);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmPrincipal";
             this.Padding = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "π";
             this.ResumeLayout(false);
 
         }
@@ -217,6 +298,11 @@
         private System.Windows.Forms.Button BtnPotencia;
         private System.Windows.Forms.Button Btn_e;
         private System.Windows.Forms.Button Btn;
+        private System.Windows.Forms.Button Btnpiπ;
+        private System.Windows.Forms.Button BtnMayorQue;
+        private System.Windows.Forms.Button BtnMenorQue;
+        private System.Windows.Forms.Button BtnMayorOIgualQue;
+        private System.Windows.Forms.Button BtnMenorOIgualQue;
     }
 }
 
