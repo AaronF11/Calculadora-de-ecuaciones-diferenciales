@@ -43,6 +43,11 @@
             this.BtnMenorQue = new System.Windows.Forms.Button();
             this.BtnMayorOIgualQue = new System.Windows.Forms.Button();
             this.BtnMenorOIgualQue = new System.Windows.Forms.Button();
+            this.BtnEsterisco = new System.Windows.Forms.Button();
+            this.BtnDivision = new System.Windows.Forms.Button();
+            this.BtnCierraParentesis = new System.Windows.Forms.Button();
+            this.BtnAbreParentesis = new System.Windows.Forms.Button();
+            this.BtnArrova = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RtbPantalla
@@ -255,12 +260,87 @@
             this.BtnMenorOIgualQue.Text = "≤";
             this.BtnMenorOIgualQue.UseVisualStyleBackColor = false;
             // 
+            // BtnEsterisco
+            // 
+            this.BtnEsterisco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnEsterisco.FlatAppearance.BorderSize = 0;
+            this.BtnEsterisco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEsterisco.ForeColor = System.Drawing.Color.White;
+            this.BtnEsterisco.Location = new System.Drawing.Point(238, 287);
+            this.BtnEsterisco.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnEsterisco.Name = "BtnEsterisco";
+            this.BtnEsterisco.Size = new System.Drawing.Size(41, 23);
+            this.BtnEsterisco.TabIndex = 19;
+            this.BtnEsterisco.Text = "*";
+            this.BtnEsterisco.UseVisualStyleBackColor = false;
+            // 
+            // BtnDivision
+            // 
+            this.BtnDivision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnDivision.FlatAppearance.BorderSize = 0;
+            this.BtnDivision.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDivision.ForeColor = System.Drawing.Color.White;
+            this.BtnDivision.Location = new System.Drawing.Point(182, 287);
+            this.BtnDivision.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnDivision.Name = "BtnDivision";
+            this.BtnDivision.Size = new System.Drawing.Size(41, 23);
+            this.BtnDivision.TabIndex = 18;
+            this.BtnDivision.Text = "÷";
+            this.BtnDivision.UseVisualStyleBackColor = false;
+            // 
+            // BtnCierraParentesis
+            // 
+            this.BtnCierraParentesis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnCierraParentesis.FlatAppearance.BorderSize = 0;
+            this.BtnCierraParentesis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCierraParentesis.ForeColor = System.Drawing.Color.White;
+            this.BtnCierraParentesis.Location = new System.Drawing.Point(124, 287);
+            this.BtnCierraParentesis.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCierraParentesis.Name = "BtnCierraParentesis";
+            this.BtnCierraParentesis.Size = new System.Drawing.Size(41, 23);
+            this.BtnCierraParentesis.TabIndex = 17;
+            this.BtnCierraParentesis.Text = ")";
+            this.BtnCierraParentesis.UseVisualStyleBackColor = false;
+            // 
+            // BtnAbreParentesis
+            // 
+            this.BtnAbreParentesis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnAbreParentesis.FlatAppearance.BorderSize = 0;
+            this.BtnAbreParentesis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAbreParentesis.ForeColor = System.Drawing.Color.White;
+            this.BtnAbreParentesis.Location = new System.Drawing.Point(70, 287);
+            this.BtnAbreParentesis.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnAbreParentesis.Name = "BtnAbreParentesis";
+            this.BtnAbreParentesis.Size = new System.Drawing.Size(41, 23);
+            this.BtnAbreParentesis.TabIndex = 16;
+            this.BtnAbreParentesis.Text = "(";
+            this.BtnAbreParentesis.UseVisualStyleBackColor = false;
+            // 
+            // BtnArrova
+            // 
+            this.BtnArrova.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
+            this.BtnArrova.FlatAppearance.BorderSize = 0;
+            this.BtnArrova.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnArrova.ForeColor = System.Drawing.Color.White;
+            this.BtnArrova.Location = new System.Drawing.Point(15, 287);
+            this.BtnArrova.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnArrova.Name = "BtnArrova";
+            this.BtnArrova.Size = new System.Drawing.Size(41, 23);
+            this.BtnArrova.TabIndex = 15;
+            this.BtnArrova.Text = "@";
+            this.BtnArrova.UseVisualStyleBackColor = false;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(294, 640);
+            this.Controls.Add(this.BtnEsterisco);
+            this.Controls.Add(this.BtnDivision);
+            this.Controls.Add(this.BtnCierraParentesis);
+            this.Controls.Add(this.BtnAbreParentesis);
+            this.Controls.Add(this.BtnArrova);
             this.Controls.Add(this.BtnMenorOIgualQue);
             this.Controls.Add(this.BtnMayorOIgualQue);
             this.Controls.Add(this.BtnMenorQue);
@@ -281,7 +361,6 @@
             this.Name = "FrmPrincipal";
             this.Padding = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "π";
             this.ResumeLayout(false);
 
         }
@@ -303,6 +382,11 @@
         private System.Windows.Forms.Button BtnMenorQue;
         private System.Windows.Forms.Button BtnMayorOIgualQue;
         private System.Windows.Forms.Button BtnMenorOIgualQue;
+        private System.Windows.Forms.Button BtnEsterisco;
+        private System.Windows.Forms.Button BtnDivision;
+        private System.Windows.Forms.Button BtnCierraParentesis;
+        private System.Windows.Forms.Button BtnAbreParentesis;
+        private System.Windows.Forms.Button BtnArrova;
     }
 }
 
