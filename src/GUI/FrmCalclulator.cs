@@ -64,6 +64,46 @@ namespace Calculadora_de_ecuaciones_diferenciales
         {
             //Componentes a los que se le aplica el redondeo.
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            PnlPantalla.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, PnlPantalla.Width, PnlPantalla.Height, 25, 25));
+            BtnLog.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLog.Width, BtnLog.Height, 15, 15));
+            BtnClc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnClc.Width, BtnClc.Height, 15, 15));
+            BtnDel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDel.Width, BtnDel.Height, 15, 15));
+            BtnCalcular.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnCalcular.Width, BtnCalcular.Height, 15, 15));
+            BtnRaiz.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnRaiz.Width, BtnRaiz.Height, 15, 15));
+            BtnLn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLn.Width, BtnLn.Height, 15, 15));
+            BtnPotencia.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPotencia.Width, BtnPotencia.Height, 15, 15));
+            Btn_e.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn_e.Width, Btn_e.Height, 15, 15));
+            Btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLn.Width, BtnLn.Height, 15, 15));
+            Btnpiπ.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btnpiπ.Width, Btnpiπ.Height, 15, 15));
+            BtnMayorQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMayorQue.Width, BtnMayorQue.Height, 15, 15));
+            BtnMenorQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMenorQue.Width, BtnMenorQue.Height, 15, 15));
+            BtnMayorOIgualQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMayorOIgualQue.Width, BtnMayorOIgualQue.Height, 15, 15));
+            BtnMenorOIgualQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMenorOIgualQue.Width, BtnMenorOIgualQue.Height, 15, 15));
+            BtnArrova.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnArrova.Width, BtnArrova.Height, 15, 15));
+            BtnAbreParentesis.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnAbreParentesis.Width, BtnAbreParentesis.Height, 15, 15));
+            BtnCierraParentesis.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnCierraParentesis.Width, BtnCierraParentesis.Height, 15, 15));
+            BtnDivision.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDivision.Width, BtnDivision.Height, 15, 15));
+            BtnMultiplicacion.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMultiplicacion.Width, BtnMultiplicacion.Height, 15, 15));
+            BtnT.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnT.Width, BtnT.Height, 15, 15));
+            Btn7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn7.Width, Btn7.Height, 15, 15));
+            Btn8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn8.Width, Btn8.Height, 15, 15));
+            Btn9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn9.Width, Btn9.Height, 15, 15));
+            BtnResta.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnResta.Width, BtnResta.Height, 15, 15));
+            BtnU.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnU.Width, BtnU.Height, 15, 15));
+            Btn4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn4.Width, Btn4.Height, 15, 15));
+            Btn5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn5.Width, Btn5.Height, 15, 15));
+            Btn6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn6.Width, Btn6.Height, 15, 15));
+            BtnSuma.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnSuma.Width, BtnSuma.Height, 15, 15));
+            BtnX.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnX.Width, BtnX.Height, 15, 15));
+            Btn1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn1.Width, Btn1.Height, 15, 15));
+            Btn2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn2.Width, Btn2.Height, 15, 15));
+            Btn3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn3.Width, Btn3.Height, 15, 15));
+            BtnPunto.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPunto.Width, BtnPunto.Height, 15, 15));
+            BtnY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnY.Width, BtnY.Height, 15, 15));
+            Btn0.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn0.Width, Btn0.Height, 15, 15));
+            BtnIgual.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnIgual.Width, BtnIgual.Height, 15, 15));
+            BtnComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnComa.Width, BtnComa.Height, 15, 15));
+            BtnPuntoyComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPuntoyComa.Width, BtnPuntoyComa.Height, 15, 15));
         }
         #endregion
     }
