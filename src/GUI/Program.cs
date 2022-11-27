@@ -16,7 +16,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipal());
+            Application.Run(new FrmCalculator());
         }
     }
 }
