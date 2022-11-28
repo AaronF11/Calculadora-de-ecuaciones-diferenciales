@@ -123,7 +123,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
         }
         #endregion
 
-        #region Botones de la calculadora.
+        //#region Botones de la calculadora.
         //---------------------------------------------------------------------
         //Permitir mostrar la ecuación inicial en la parte superior
         //y el resultado de esta en la parte infeior de la pantalla.
@@ -133,6 +133,196 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtEcuacionInicial.Text = TxtResultado.Text;
             TxtResultado.Text = "Resultado";
         }
-        #endregion
+
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+            TxtEcuacionInicial.Clear();
+            TxtResultado.Clear();
+        }
+
+        private void BtnClc_Click(object sender, EventArgs e)
+        {
+            //TODO:
+        }
+
+        private void BtnLog_Click(object sender, EventArgs e)
+        {
+            //TODO:
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            //TODO:
+        }
+
+        private void Btn_e_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "e";
+        }
+
+        private void BtnPotencia_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "^";
+        }
+
+        private void BtnLn_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "ln";
+        }
+
+        private void BtnRaiz_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "√";
+        }
+
+        private void BtnMenorOIgualQue_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "<=";
+        }
+
+        private void BtnMayorOIgualQue_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + ">=";
+        }
+
+        private void BtnMenorQue_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "<";
+        }
+
+        private void BtnMayorQue_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + ">";
+        }
+
+        private void Btnpiπ_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "π";
+        }
+
+        private void BtnMultiplicacion_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "*";
+        }
+
+        private void BtnDivision_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "/";
+        }
+
+        private void BtnCierraParentesis_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + ")";
+        }
+
+        private void BtnAbreParentesis_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "(";
+        }
+
+        private void BtnArrova_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "@";
+        }
+
+        private void BtnResta_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "-";
+        }
+
+        private void Btn9_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "9";
+        }
+
+        private void Btn8_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "8";
+        }
+
+        private void Btn7_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "7";
+        }
+
+        private void BtnT_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "T";
+        }
+
+        private void BtnSuma_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "+";
+        }
+
+        private void Btn6_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "6";
+        }
+
+        private void Btn5_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "5";
+        }
+
+        private void Btn4_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "4";
+        }
+
+        private void BtnU_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "u";
+        }
+
+        private void BtnPunto_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + ".";
+        }
+
+        private void Btn3_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "3";
+        }
+
+        private void Btn2_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "2";
+        }
+
+        private void Btn1_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "1";
+        }
+
+        private void BtnX_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "x";
+        }
+
+        private void BtnPuntoyComa_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + ";";
+        }
+
+        private void BtnComa_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + ",";
+        }
+
+        private void BtnIgual_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "=";
+        }
+
+        private void Btn0_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "0";
+        }
+
+        private void BtnY_Click(object sender, EventArgs e)
+        {
+            TxtResultado.Text = TxtResultado.Text + "y";
+        }
     }
 }
