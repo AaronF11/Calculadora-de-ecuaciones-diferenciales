@@ -77,7 +77,10 @@
     </Compile>
     <None Include="src\Base\.gitkeep" />
     <None Include="src\GUI\.gitkeep" />
+    <None Include="src\Resources\#1 Boceto.pdf" />
     <None Include="src\Resources\.gitkeep" />
+    <None Include="src\Resources\Documentación Dark Mode.pdf" />
+    <None Include="src\Resources\Documentación Modo claro.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

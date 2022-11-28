@@ -106,5 +106,33 @@ namespace Calculadora_de_ecuaciones_diferenciales
             BtnPuntoyComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPuntoyComa.Width, BtnPuntoyComa.Height, 15, 15));
         }
         #endregion
+
+        #region Metodo para mover la ventana.
+        //---------------------------------------------------------------------
+        //Permitir mover la ventana por la pantalla.
+        //---------------------------------------------------------------------
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapure();
+
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wsmg, int wparam, int lparam);
+        private void Delizar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapure();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        #endregion
+
+        #region Botones de la calculadora.
+        //---------------------------------------------------------------------
+        //Permitir mostrar la ecuación inicial en la parte superior
+        //y el resultado de esta en la parte infeior de la pantalla.
+        //---------------------------------------------------------------------
+        private void BtnCalcular_Click(object sender, EventArgs e)
+        {
+            TxtEcuacionInicial.Text = TxtResultado.Text;
+            TxtResultado.Text = "Resultado";
+        }
+        #endregion
     }
 }

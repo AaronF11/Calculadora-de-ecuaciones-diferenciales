@@ -122,7 +122,7 @@
             this.BtnCalcular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(201)))));
             this.BtnCalcular.FlatAppearance.BorderSize = 0;
             this.BtnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCalcular.ForeColor = System.Drawing.Color.White;
+            this.BtnCalcular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(131)))), ((int)(((byte)(210)))));
             this.BtnCalcular.Location = new System.Drawing.Point(213, 2);
             this.BtnCalcular.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnCalcular.Name = "BtnCalcular";
@@ -130,6 +130,7 @@
             this.BtnCalcular.TabIndex = 6;
             this.BtnCalcular.Text = "Calcular";
             this.BtnCalcular.UseVisualStyleBackColor = false;
+            this.BtnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
             // 
             // BtnLn
             // 
@@ -680,7 +681,7 @@
             this.TxtResultado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TxtResultado.Size = new System.Drawing.Size(297, 44);
             this.TxtResultado.TabIndex = 1;
-            this.TxtResultado.Text = "x^2 + 5x + 3 = 0";
+            this.TxtResultado.Text = "x^2 + 5x + 3 = 1";
             // 
             // PnlPantalla
             // 
@@ -698,6 +699,7 @@
             this.TxtEcuacionInicial.BackColor = System.Drawing.Color.White;
             this.TxtEcuacionInicial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtEcuacionInicial.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TxtEcuacionInicial.Enabled = false;
             this.TxtEcuacionInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtEcuacionInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(127)))));
             this.TxtEcuacionInicial.Location = new System.Drawing.Point(45, 49);
@@ -706,7 +708,6 @@
             this.TxtEcuacionInicial.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TxtEcuacionInicial.Size = new System.Drawing.Size(297, 22);
             this.TxtEcuacionInicial.TabIndex = 2;
-            this.TxtEcuacionInicial.Text = "x^2 + 5x + 3 = 0";
             // 
             // FrmCalculator
             // 
@@ -721,6 +722,7 @@
             this.Name = "FrmCalculator";
             this.Padding = new System.Windows.Forms.Padding(20);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Delizar_MouseDown);
             this.FlPnlZonaBotones.ResumeLayout(false);
             this.PnlPantalla.ResumeLayout(false);
             this.PnlPantalla.PerformLayout();
