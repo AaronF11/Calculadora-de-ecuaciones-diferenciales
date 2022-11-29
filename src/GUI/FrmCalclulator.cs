@@ -123,7 +123,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
         }
         #endregion
 
-        //#region Botones de la calculadora.
+        #region Métodos de botones.
         //---------------------------------------------------------------------
         //Permitir mostrar la ecuación inicial en la parte superior
         //y el resultado de esta en la parte infeior de la pantalla.
@@ -324,5 +324,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
         {
             TxtResultado.Text = TxtResultado.Text + "y";
         }
+
+        #endregion
     }
 }

@@ -7,13 +7,27 @@ using System.Threading.Tasks;
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
     //---------------------------------------------------------------------
-    //Clase de factorizacion.
+    //Clase de factorización.
     //JEGR. Jose Eduardo Garcia Ramirez.
     //JAGL. Juan Antonio Gil Lopez. 28/11/2022.    
     //---------------------------------------------------------------------
     public class CFactoriza
     {
+        //----------------------------------
+        // Atributos
+        //----------------------------------
 
+        //-------------------------
+        // Constructor
+        //-------------------------
+        public CFactoriza()
+        {
+
+        }
+
+        //-------------------------
+        // Clase que factoriza
+        //-------------------------
         static void CFactor(string[] args)
         {
             //"a" representa um numero real y "b" Representa el factor comun

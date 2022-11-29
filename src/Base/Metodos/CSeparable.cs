@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 {
+    //-------------------------------------------------------------//
+    // Clase que répresenta el método para ecuaciones separables
+    //-------------------------------------------------------------//
     public class CSeparable
     {
+        //-------------------------
+        // Atributos
+        //-------------------------
+
+        //-------------------------
+        // Constructor
+        //-------------------------
+        public CSeparable()
+        {
+
+        }
     }
 }
