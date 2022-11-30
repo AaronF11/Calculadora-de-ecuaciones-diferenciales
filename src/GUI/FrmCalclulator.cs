@@ -364,7 +364,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
         {
             TxtResultado.Text = TxtResultado.Text + "z";
         }
-<<<<<<< HEAD
 #endregion
 
         #region Botones de la barra superior.
@@ -391,9 +390,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
         {
             this.WindowState = FormWindowState.Minimized;
         }
-=======
-
->>>>>>> 2aa5bb9bee5290500cfeb6ef032ee0ca500daac3
         #endregion
     }
 }
