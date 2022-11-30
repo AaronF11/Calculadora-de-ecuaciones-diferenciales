@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
     //---------------------------------------------------------------------
-    //Clase de factorización.
+    //Clase de factorización. 28/11/2022.   
     //JEGR. Jose Eduardo Garcia Ramirez.
-    //JAGL. Juan Antonio Gil Lopez. 28/11/2022.    
+    //JAGL. Juan Antonio Gil Lopez.
     //---------------------------------------------------------------------
     public class CFactoriza
     {
@@ -32,10 +32,13 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         {
             //"a" representa um numero real y "b" Representa el factor comun
             int a, b;
+
             //Agarra a escribiendo cual es el numero
             Console.WriteLine(" Ingresa un numero: ");
+
             //Inicializa el numero que escribimos
             a = int.Parse(Console.ReadLine());
+
             //Formula para sacar el comun divisor (Factor Comun).
             for (b = 1; b <= a; b++)
             {

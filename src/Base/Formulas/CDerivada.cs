@@ -18,8 +18,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //----------------------------------
 
         //Atributos 
-        public int Coeficiente;
-        public int Exponente;
+        public double Coeficiente;
+        public double Exponente;
         public string Variable;
 
         //Atributos del segundo termino 
@@ -32,29 +32,30 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-------------------------
         public CDerivada(double Coeficiente,double Exponente, String Variable)
         {
-            Coeficiente = Coeficiente;
-            Exponente = Exponente;
-            Variable = Variable;
+            this.Coeficiente = Coeficiente;
+            this.Exponente = Exponente;
+            this.Variable = Variable;
         }
 
         //-----------------------------------------------------//
         //Método que resuelve derivada: Potencia f(x)=nx^n-1
         //-----------------------------------------------------//
-        public void Derivar()
+        public string Derivar()
          {          
             //En estas variables se aguardan los datos una vez realizadas las operaciones básicas 
-            int NuevoCoeficiente;
-            int NuevoExponente;
+            double NuevoCoeficiente;
+            double NuevoExponente;
             String NuevaVariable;
 
             String ResultadoDerivada;           
 
             //Se realizan las operaciones básicas 
-            NuevoCoeficiente= Exponente * Coeficiente;
-            NuevoExponente = Exponente-1;
+            NuevoCoeficiente = Exponente * Coeficiente;
+            NuevoExponente = Exponente - 1;
+            NuevaVariable = Variable;
 
             //Aguarda el resultado final de la derivada 
-             ResultadoDerivada = NuevoCoeficiente.ToString()+Exponente+NuevoExponente.ToString();           
+            return ResultadoDerivada = NuevoCoeficiente.ToString() + NuevaVariable+ "^" + NuevoExponente.ToString();           
          }
 
         //-----------------------------------------------------//
@@ -69,8 +70,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             int Resultado;
             int resultado2;
 
-            int NuevoCoeficiente;
-            int NuevoExponente;
+            double NuevoCoeficiente;
+            double NuevoExponente;
             String NuevaVariable;
 
             //Segundo término 
@@ -78,16 +79,16 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             int NuevoExponente2;
             String NuevaVariable2;
 
-            int ResultadoExpDerivada;
+            string ResultadoExpDerivada;
            
             //Se deriva lo de adentro
             NuevoCoeficiente = Coeficiente * Exponente;
             NuevoExponente = Exponente - 1;
 
-            NuevoCoeficiente2=Coeficiente2* Exponente2;
+            NuevoCoeficiente2 = Coeficiente2 * Exponente2;
             NuevoExponente2 = Exponente2;
 
-            ResultadoExpDerivada = Exponente * NuevoCoeficiente2;
+            ResultadoExpDerivada = Convert.ToString(Exponente * NuevoCoeficiente2);
         }
     }
 }

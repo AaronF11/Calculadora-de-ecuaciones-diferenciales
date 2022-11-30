@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,10 @@ namespace Calculadora_de_ecuaciones_diferenciales
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public partial class FrmCalculator : Form
     {
+        public double Coeficiente { get; private set; }
+        public double Exponente { get; private set; }
+        public string Variable { get; private set; }
+
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Atributos.
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -130,7 +135,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
         //---------------------------------------------------------------------
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
-            TxtEcuacionInicial.Text = TxtResultado.Text;
             TxtResultado.Text = "Resultado";
         }
 
