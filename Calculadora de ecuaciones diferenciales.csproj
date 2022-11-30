@@ -49,7 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Base\Formulas\CDerivada.cs" />
     <Compile Include="src\Base\Formulas\CFactoriza.cs" />
-    <Compile Include="src\Base\Formulas\CIntegral.cs" />
+    <Compile Include="src\Base\Formulas\CIntegral.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Base\Metodos\CExacta.cs" />
     <Compile Include="src\Base\Metodos\CFactorIntegrante.cs" />
     <Compile Include="src\Base\Metodos\CSeparable.cs" />
