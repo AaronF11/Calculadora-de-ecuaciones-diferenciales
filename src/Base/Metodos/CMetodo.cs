@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Forms;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
 {
@@ -63,7 +64,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
                 Signos.Add(Coincidencia.Value);
 
                 // Información de Debug
-                Debug.Print(Coincidencia.Value);
+               MessageBox.Show(Coincidencia.Value);
             }
         }
     }
