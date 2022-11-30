@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
+    //-------------------------
+    // Clase que integra.
+    //-------------------------
     public class CIntegral
     {
+        //-------------------------
+        // Atributos
+        //-------------------------
+
+        //-------------------------
+        // Constructor
+        //-------------------------
+        public CIntegral() 
+        {
+            
+        }
     }
 }
