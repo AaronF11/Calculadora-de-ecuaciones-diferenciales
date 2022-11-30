@@ -22,13 +22,13 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         public List<string> Signos;
         public List<string> PartesEcuacion;
 
-        private string Ecuacion;
+        protected string Ecuacion;
     
-        private MatchCollection ColeccionSignos;
-        private MatchCollection ColeccionPartesEcuacion;
+        protected MatchCollection ColeccionSignos;
+        protected MatchCollection ColeccionPartesEcuacion;
 
-        private Regex ExprSignos;
-        private Regex ExprPartes;
+        protected Regex ExprSignos;
+        protected Regex ExprPartes;
 
         //-------------------------
         // Constructor
