@@ -11,7 +11,7 @@ namespace POO22B_GPJA
     //-------------------------
     // Clase que integra.
     //-------------------------
-    public class CDerivarX : TextBox
+    public class CDerivarX
     {
         //Integrantes de Integrales:
         //Jorge Alfredo Hernández Mota
@@ -45,6 +45,7 @@ namespace POO22B_GPJA
 
             //If que verifica que el formato de la ecuación a integrar sea correcta
             Validez = Regex.IsMatch(Integral, "^(-|\\+?)+[0-9]*([0-9]+\\/+[0-9])*[a-z]*d[a-z]+\\/[a-z]");
+            
             if (Validez)
             {
                 //Obtiene la primera parte de la ecuación, todo lo que esté antes de "dx"
@@ -63,10 +64,14 @@ namespace POO22B_GPJA
                     Resultado = Factor + " ln " + "|" + X + "|" + " + C";
                     return Resultado;
                 }
+            
                 MessageBox.Show("Integral no válida");
+                
                 return null;
             }
+            
             MessageBox.Show("Integral no válida");
+            
             return null;
         }
     }
