@@ -11,7 +11,7 @@ namespace POO22B_GPJA
     //-------------------------
     // Clase que integra.
     //-------------------------
-    public class CDerivarX
+    public class CIntegral
     {
         //Integrantes de Integrales:
         //Jorge Alfredo Hernández Mota
@@ -30,7 +30,7 @@ namespace POO22B_GPJA
         //-------------------------
         // Constructor
         //-------------------------
-        public CDerivarX()
+        public CIntegral()
         {
         }
 

@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="src\Base\Metodos\CExacta.cs" />
     <Compile Include="src\Base\Metodos\CFactorIntegrante.cs" />
+    <Compile Include="src\Base\Metodos\CMetodo.cs" />
     <Compile Include="src\Base\Metodos\CSeparable.cs" />
     <Compile Include="src\GUI\FrmCalclulator.cs">
       <SubType>Form</SubType>
