@@ -38,6 +38,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
         //Atributos.
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         int Modo;
+        int Operacion;
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Contructor.
@@ -45,10 +46,20 @@ namespace Calculadora_de_ecuaciones_diferenciales
         public FrmCalculator()
         {
             InitializeComponent();
-            Redondear();
-            PnlMenu.Height = 0;
-            Modo = 0; 
         }
+
+        #region Método cuando se crea la ventana.
+        //---------------------------------------------------------------------
+        //Método que se ejecuta al iniciar la ventana.
+        //---------------------------------------------------------------------
+        private void FrmCalculator_Load(object sender, EventArgs e)
+        {
+            Redondear();//! Redondea los bordes de los componentes y de la ventana.
+            PnlMenu.Height = 0;//! Esconde el menú.
+            Modo = 0; //! Modo inicial de la calculadora.
+            Operacion = 0; //! Operación inicial de la calculadora.
+        }
+        #endregion
 
         #region Método para redondear componentes.
         //---------------------------------------------------------------------
@@ -73,7 +84,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
             //Componentes a los que se le aplica el redondeo.
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 50, 50));
             PnlPantalla.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, PnlPantalla.Width, PnlPantalla.Height, 25, 25));
-            //BtnLog.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLog.Width, BtnLog.Height, 15, 15));
             BtnAc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnAc.Width, BtnAc.Height, 15, 15));
             BtnDel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDel.Width, BtnDel.Height, 15, 15));
             BtnCalcular.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnCalcular.Width, BtnCalcular.Height, 15, 15));
@@ -97,7 +107,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
             Btn8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn8.Width, Btn8.Height, 15, 15));
             Btn9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn9.Width, Btn9.Height, 15, 15));
             BtnResta.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnResta.Width, BtnResta.Height, 15, 15));
-            BtnYY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnYY.Width, BtnYY.Height, 15, 15));
+            BtnY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnY.Width, BtnY.Height, 15, 15));
             Btn4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn4.Width, Btn4.Height, 15, 15));
             Btn5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn5.Width, Btn5.Height, 15, 15));
             Btn6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn6.Width, Btn6.Height, 15, 15));
@@ -110,12 +120,10 @@ namespace Calculadora_de_ecuaciones_diferenciales
             BtnZ.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnZ.Width, BtnZ.Height, 15, 15));
             Btn0.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn0.Width, Btn0.Height, 15, 15));
             BtnIgual.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnIgual.Width, BtnIgual.Height, 15, 15));
-            //BtnComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnComa.Width, BtnComa.Height, 15, 15));
-            //BtnPuntoyComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPuntoyComa.Width, BtnPuntoyComa.Height, 15, 15));
         }
         #endregion
 
-        #region Metodo para mover la ventana.
+        #region Método para mover la ventana.
         //---------------------------------------------------------------------
         //Permitir mover la ventana por la pantalla.
         //---------------------------------------------------------------------
@@ -131,9 +139,35 @@ namespace Calculadora_de_ecuaciones_diferenciales
         }
         #endregion
 
+        #region Botones de la barra superior.
+        private void BtnMenu_Click(object sender, EventArgs e)
+        {
+            if (PnlMenu.Height == 140)
+            {
+                PnlMenu.Height = 0;
+                BtnMenu.BackColor = this.BackColor;
+            }
+            else if (PnlMenu.Height == 0)
+            {
+                PnlMenu.Height = 140;
+                BtnMenu.BackColor = this.BackColor;
+            }
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void BtnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        #endregion
+
         #region Cambiar modo de la interfaz.
         //---------------------------------------------------------------------
-        //Crea un rectangulo para redondear el componente.
+        //Método que alterna los colores de la calculadora (Claro/Oscuro).
         //---------------------------------------------------------------------
         private void Modos(int Modo)
         {
@@ -143,6 +177,71 @@ namespace Calculadora_de_ecuaciones_diferenciales
                 BtnModo.ImageAlign = ContentAlignment.MiddleLeft;
                 BtnModo.Text = "Dark";
                 BtnModo.TextAlign = ContentAlignment.MiddleCenter;
+                BtnModo.BackColor = Color.Black;
+                BtnModo.ForeColor = Color.FromArgb(84, 84, 84);
+                this.BackColor = Color.FromArgb(224, 224, 224);
+                BtnMenu.Image = Properties.Resources.Menu;
+                BtnMinimizar.Image = Properties.Resources.Minimizar;
+                BtnCerrar.Image = Properties.Resources.Cerrar;
+                BtnMenu.BackColor = this.BackColor;
+                PnlMenu.BackColor = this.BackColor;
+                PnlPantalla.BackColor = Color.White;
+                TxtEcuacionInicial.BackColor = Color.White;
+                TxtResultado.BackColor = Color.White;
+                TxtResultado.ForeColor = Color.Black;
+                BtnCalcular.BackColor = Color.FromArgb(200, 230, 201);
+                BtnCalcular.ForeColor = Color.FromArgb(45, 131, 210);
+                BtnAc.BackColor = Color.FromArgb(128, 203, 196);
+                BtnDel.BackColor = Color.FromArgb(128, 203, 196);
+                BtnD.BackColor = Color.FromArgb(144, 202, 249);
+                Btn_e.BackColor = Color.FromArgb(144, 202, 249);
+                BtnPotencia.BackColor = Color.FromArgb(144, 202, 249);
+                BtnLn.BackColor = Color.FromArgb(144, 202, 249);
+                BtnRaiz.BackColor = Color.FromArgb(144, 202, 249);
+                BtnDXDY.BackColor = Color.FromArgb(144, 202, 249);
+                BtnDYDX.BackColor = Color.FromArgb(144, 202, 249);
+                BtnDX.BackColor = Color.FromArgb(144, 202, 249);
+                BtnDY.BackColor = Color.FromArgb(144, 202, 249);
+                Btnpiπ.BackColor = Color.FromArgb(144, 202, 249);
+                BtnIntegral.BackColor = Color.FromArgb(144, 202, 249);
+                BtnAbreParentesis.BackColor = Color.FromArgb(144, 202, 249);
+                BtnCierraParentesis.BackColor = Color.FromArgb(144, 202, 249);
+                BtnDivision.BackColor = Color.FromArgb(206, 147, 216);
+                BtnMultiplicacion.BackColor = Color.FromArgb(206, 147, 216);
+                BtnResta.BackColor = Color.FromArgb(206, 147, 216);
+                BtnSuma.BackColor = Color.FromArgb(206, 147, 216);
+                BtnX.BackColor = Color.White;
+                BtnX.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn7.BackColor = Color.White;
+                Btn7.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn8.BackColor = Color.White;
+                Btn8.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn9.BackColor = Color.White;
+                Btn9.ForeColor = Color.FromArgb(45, 131, 210);
+                BtnY.BackColor = Color.White;
+                BtnY.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn4.BackColor = Color.White;
+                Btn4.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn5.BackColor = Color.White;
+                Btn5.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn6.BackColor = Color.White;
+                Btn6.ForeColor = Color.FromArgb(45, 131, 210);
+                BtnW.BackColor = Color.White;
+                BtnW.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn1.BackColor = Color.White;
+                Btn1.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn2.BackColor = Color.White;
+                Btn2.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn3.BackColor = Color.White;
+                Btn3.ForeColor = Color.FromArgb(45, 131, 210); ;
+                BtnPunto.BackColor = Color.White;
+                BtnPunto.ForeColor = Color.FromArgb(45, 131, 210);
+                BtnZ.BackColor = Color.White;
+                BtnZ.ForeColor = Color.FromArgb(45, 131, 210);
+                Btn0.BackColor = Color.White;
+                Btn0.ForeColor = Color.FromArgb(45, 131, 210);
+                BtnIgual.BackColor = Color.White;
+                BtnIgual.ForeColor = Color.FromArgb(45, 131, 210);
             }
             else if (Modo == 0)
             {
@@ -150,9 +249,77 @@ namespace Calculadora_de_ecuaciones_diferenciales
                 BtnModo.ImageAlign = ContentAlignment.MiddleLeft;
                 BtnModo.Text = "Light";
                 BtnModo.TextAlign = ContentAlignment.MiddleCenter;
+                BtnModo.BackColor = Color.White;
+                BtnModo.ForeColor = Color.FromArgb(84, 84, 84);
+                this.BackColor = Color.FromArgb(54, 71, 79);
+                BtnMenu.Image = Properties.Resources.Menu_2;
+                BtnMinimizar.Image = Properties.Resources.Minimizar_2;
+                BtnCerrar.Image = Properties.Resources.Cerrar_2;
+                BtnMenu.BackColor = this.BackColor;
+                PnlMenu.BackColor = Color.FromArgb(141, 163, 171);
+                PnlPantalla.BackColor = Color.FromArgb(70, 90, 101);
+                TxtEcuacionInicial.BackColor = Color.FromArgb(70, 90, 101);
+                TxtResultado.BackColor = Color.FromArgb(70, 90, 101);
+                TxtResultado.ForeColor = Color.White;
+                BtnCalcular.BackColor = Color.FromArgb(47, 125, 49);
+                BtnCalcular.ForeColor = Color.White;
+                BtnAc.BackColor = Color.FromArgb(0, 105, 91);
+                BtnDel.BackColor = Color.FromArgb(0, 105, 91);
+                BtnD.BackColor = Color.FromArgb(2, 119, 189);
+                Btn_e.BackColor = Color.FromArgb(2, 119, 189);
+                BtnPotencia.BackColor = Color.FromArgb(2, 119, 189);
+                BtnLn.BackColor = Color.FromArgb(2, 119, 189);
+                BtnRaiz.BackColor = Color.FromArgb(2, 119, 189);
+                BtnDXDY.BackColor = Color.FromArgb(2, 119, 189);
+                BtnDYDX.BackColor = Color.FromArgb(2, 119, 189);
+                BtnDX.BackColor = Color.FromArgb(2, 119, 189);
+                BtnDY.BackColor = Color.FromArgb(2, 119, 189);
+                Btnpiπ.BackColor = Color.FromArgb(2, 119, 189);
+                BtnIntegral.BackColor = Color.FromArgb(2, 119, 189);
+                BtnAbreParentesis.BackColor = Color.FromArgb(2, 119, 189);
+                BtnCierraParentesis.BackColor = Color.FromArgb(2, 119, 189);
+                BtnDivision.BackColor = Color.FromArgb(106, 27, 154);
+                BtnMultiplicacion.BackColor = Color.FromArgb(106, 27, 154);
+                BtnResta.BackColor = Color.FromArgb(106, 27, 154);
+                BtnSuma.BackColor = Color.FromArgb(106, 27, 154);
+                BtnX.BackColor = Color.FromArgb(93, 109, 125);
+                BtnX.ForeColor = Color.White;
+                Btn7.BackColor = Color.FromArgb(93, 109, 125);
+                Btn7.ForeColor = Color.White;
+                Btn8.BackColor = Color.FromArgb(93, 109, 125);
+                Btn8.ForeColor = Color.White;
+                Btn9.BackColor = Color.FromArgb(93, 109, 125);
+                Btn9.ForeColor = Color.White;
+                BtnY.BackColor = Color.FromArgb(93, 109, 125);
+                BtnY.ForeColor = Color.White;
+                Btn4.BackColor = Color.FromArgb(93, 109, 125);
+                Btn4.ForeColor = Color.White;
+                Btn5.BackColor = Color.FromArgb(93, 109, 125);
+                Btn5.ForeColor = Color.White;
+                Btn6.BackColor = Color.FromArgb(93, 109, 125);
+                Btn6.ForeColor = Color.White;
+                BtnW.BackColor = Color.FromArgb(93, 109, 125);
+                BtnW.ForeColor = Color.White;
+                Btn1.BackColor = Color.FromArgb(93, 109, 125);
+                Btn1.ForeColor = Color.White;
+                Btn2.BackColor = Color.FromArgb(93, 109, 125);
+                Btn2.ForeColor = Color.White;
+                Btn3.BackColor = Color.FromArgb(93, 109, 125);
+                Btn3.ForeColor = Color.White;
+                BtnPunto.BackColor = Color.FromArgb(93, 109, 125);
+                BtnPunto.ForeColor = Color.White;
+                BtnZ.BackColor = Color.FromArgb(93, 109, 125);
+                BtnZ.ForeColor = Color.White;
+                Btn0.BackColor = Color.FromArgb(93, 109, 125);
+                Btn0.ForeColor = Color.White;
+                BtnIgual.BackColor = Color.FromArgb(93, 109, 125);
+                BtnIgual.ForeColor = Color.White;
             }
         }
 
+        //---------------------------------------------------------------------
+        //Botón que manda a llamar al método Modos.
+        //---------------------------------------------------------------------
         private void BtnModo_Click(object sender, EventArgs e)
         {
             if (Modo == 0)
@@ -170,7 +337,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
 
         #region Botones de la calculadora.
         //---------------------------------------------------------------------
-        //Permitir mostrar la ecuación inicial en la parte superior
+        //Permite mostrar la ecuación inicial en la parte superior
         //y el resultado de esta en la parte infeior de la pantalla.
         //---------------------------------------------------------------------
         private void BtnCalcular_Click(object sender, EventArgs e)
@@ -179,6 +346,9 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = "";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite borrar el último caracter.
+        //---------------------------------------------------------------------
         private void BtnDel_Click(object sender, EventArgs e)
         {
             string Ec = TxtResultado.Text;
@@ -189,206 +359,277 @@ namespace Calculadora_de_ecuaciones_diferenciales
             }
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite borrar todos los campos.
+        //---------------------------------------------------------------------
         private void BtnAc_Click(object sender, EventArgs e)
         {
             TxtEcuacionInicial.Clear();
             TxtResultado.Clear();
         }
 
-        private void BtnLog_Click(object sender, EventArgs e)
-        {
-            //TODO:
-        }
-
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la d.
+        //---------------------------------------------------------------------
         private void BtnD_Click(object sender, EventArgs e)
         {
-            //TODO:
+            TxtResultado.Text += "d";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la e.
+        //---------------------------------------------------------------------
         private void Btn_e_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "e";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la ^.
+        //---------------------------------------------------------------------
         private void BtnPotencia_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "^";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar el  ln.
+        //---------------------------------------------------------------------
         private void BtnLn_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "ln";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la √.
+        //---------------------------------------------------------------------
         private void BtnRaiz_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "√";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la dx/dy.
+        //---------------------------------------------------------------------
         private void BtnDXDY_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "<=";
+            TxtResultado.Text = TxtResultado.Text + "dx/dy";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la dy/dx.
+        //---------------------------------------------------------------------
         private void BtnDYDX_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + ">=";
+            TxtResultado.Text = TxtResultado.Text + "dy/dx";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la dy.
+        //---------------------------------------------------------------------
         private void BtnDY_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "dy";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la dx.
+        //---------------------------------------------------------------------
         private void BtnDX_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "dx";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar el PI.
+        //---------------------------------------------------------------------
         private void Btnpiπ_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "π";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una multiplicación a la operación.
+        //---------------------------------------------------------------------
         private void BtnMultiplicacion_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "*";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una división a la operación.
+        //---------------------------------------------------------------------
         private void BtnDivision_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "/";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite abrir parentesis.
+        //---------------------------------------------------------------------
         private void BtnCierraParentesis_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + ")";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite cerrar parentesis.
+        //---------------------------------------------------------------------
         private void BtnAbreParentesis_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "(";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la una integral.
+        //---------------------------------------------------------------------
         private void BtnIntegral_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "@";
+            TxtResultado.Text = TxtResultado.Text + "∫";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar la una resta a la operación.
+        //---------------------------------------------------------------------
         private void BtnResta_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "-";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 9 a la operación.
+        //---------------------------------------------------------------------
         private void Btn9_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "9";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 8 a la operación.
+        //---------------------------------------------------------------------
         private void Btn8_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "8";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 7 a la operación.
+        //---------------------------------------------------------------------
         private void Btn7_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "7";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una x a la operación.
+        //---------------------------------------------------------------------
         private void BtnX_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "x";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una suma a la operación.
+        //---------------------------------------------------------------------
         private void BtnSuma_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "+";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 6 a la operación.
+        //---------------------------------------------------------------------
         private void Btn6_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "6";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 5 a la operación.
+        //---------------------------------------------------------------------
         private void Btn5_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "5";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 4 a la operación.
+        //---------------------------------------------------------------------
         private void Btn4_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "4";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una y a la operación.
+        //---------------------------------------------------------------------
         private void BtnY_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "y";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un punto a la operación.
+        //---------------------------------------------------------------------
         private void BtnPunto_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + ".";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 3 a la operación.
+        //---------------------------------------------------------------------
         private void Btn3_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "3";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 2 a la operación.
+        //---------------------------------------------------------------------
         private void Btn2_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "2";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 1 a la operación.
+        //---------------------------------------------------------------------
         private void Btn1_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "1";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una w a la operación.
+        //---------------------------------------------------------------------
         private void BtnW_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "w";
         }
-        
+
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un igual a la operación.
+        //---------------------------------------------------------------------
         private void BtnIgual_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "=";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar un 0 a la operación.
+        //---------------------------------------------------------------------
         private void Btn0_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "0";
         }
 
+        //---------------------------------------------------------------------
+        //Botón que permite agregar una z a la operación.
+        //---------------------------------------------------------------------
         private void BtnZ_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "z";
-        }
-#endregion
-
-        #region Botones de la barra superior.
-        private void BtnMenu_Click(object sender, EventArgs e)
-        {
-            if (PnlMenu.Height == 145)
-            {
-                PnlMenu.Height = 0;
-                BtnMenu.BackColor = Color.Transparent;
-            }
-            else if (PnlMenu.Height == 0)
-            {
-                PnlMenu.Height = 145;
-                BtnMenu.BackColor = PnlMenu.BackColor;
-            }
-        }
-
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void BtnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
         #endregion
     }

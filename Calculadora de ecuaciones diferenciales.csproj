@@ -122,5 +122,14 @@
   <ItemGroup>
     <None Include="Resources\icons8_z_coordinate_32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Close_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_minus_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Menu_32px_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

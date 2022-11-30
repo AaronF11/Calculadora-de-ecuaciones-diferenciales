@@ -52,7 +52,7 @@
             this.Btn6 = new System.Windows.Forms.Button();
             this.Btn5 = new System.Windows.Forms.Button();
             this.Btn4 = new System.Windows.Forms.Button();
-            this.BtnYY = new System.Windows.Forms.Button();
+            this.BtnY = new System.Windows.Forms.Button();
             this.BtnPunto = new System.Windows.Forms.Button();
             this.Btn3 = new System.Windows.Forms.Button();
             this.Btn2 = new System.Windows.Forms.Button();
@@ -68,11 +68,11 @@
             this.TxtResultado = new System.Windows.Forms.TextBox();
             this.PnlPantalla = new System.Windows.Forms.Panel();
             this.TxtEcuacionInicial = new System.Windows.Forms.TextBox();
-            this.PnlMenu = new System.Windows.Forms.Panel();
-            this.BtnIntegracion = new System.Windows.Forms.Button();
-            this.BtnDerivacion = new System.Windows.Forms.Button();
-            this.BtnFactorizacion = new System.Windows.Forms.Button();
+            this.PnlMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.BtnModo = new System.Windows.Forms.Button();
+            this.BtnSeparable = new System.Windows.Forms.Button();
+            this.BtnExacta = new System.Windows.Forms.Button();
+            this.BtnIntegracion = new System.Windows.Forms.Button();
             this.BtnMenu = new System.Windows.Forms.Button();
             this.BtnMinimizar = new System.Windows.Forms.Button();
             this.BtnCerrar = new System.Windows.Forms.Button();
@@ -459,21 +459,21 @@
             this.Btn4.UseVisualStyleBackColor = false;
             this.Btn4.Click += new System.EventHandler(this.Btn4_Click);
             // 
-            // BtnYY
+            // BtnY
             // 
-            this.BtnYY.BackColor = System.Drawing.Color.White;
-            this.BtnYY.FlatAppearance.BorderSize = 0;
-            this.BtnYY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnYY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnYY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(131)))), ((int)(((byte)(210)))));
-            this.BtnYY.Location = new System.Drawing.Point(3, 254);
-            this.BtnYY.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnYY.Name = "BtnYY";
-            this.BtnYY.Size = new System.Drawing.Size(64, 59);
-            this.BtnYY.TabIndex = 27;
-            this.BtnYY.Text = "Y";
-            this.BtnYY.UseVisualStyleBackColor = false;
-            this.BtnYY.Click += new System.EventHandler(this.BtnY_Click);
+            this.BtnY.BackColor = System.Drawing.Color.White;
+            this.BtnY.FlatAppearance.BorderSize = 0;
+            this.BtnY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnY.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(131)))), ((int)(((byte)(210)))));
+            this.BtnY.Location = new System.Drawing.Point(3, 254);
+            this.BtnY.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnY.Name = "BtnY";
+            this.BtnY.Size = new System.Drawing.Size(64, 59);
+            this.BtnY.TabIndex = 27;
+            this.BtnY.Text = "Y";
+            this.BtnY.UseVisualStyleBackColor = false;
+            this.BtnY.Click += new System.EventHandler(this.BtnY_Click);
             // 
             // BtnPunto
             // 
@@ -622,7 +622,7 @@
             this.FlPnlZonaBotones.Controls.Add(this.Btn8);
             this.FlPnlZonaBotones.Controls.Add(this.Btn9);
             this.FlPnlZonaBotones.Controls.Add(this.BtnResta);
-            this.FlPnlZonaBotones.Controls.Add(this.BtnYY);
+            this.FlPnlZonaBotones.Controls.Add(this.BtnY);
             this.FlPnlZonaBotones.Controls.Add(this.Btn4);
             this.FlPnlZonaBotones.Controls.Add(this.Btn5);
             this.FlPnlZonaBotones.Controls.Add(this.Btn6);
@@ -695,6 +695,7 @@
             this.TxtResultado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtResultado.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TxtResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtResultado.ForeColor = System.Drawing.Color.Black;
             this.TxtResultado.Location = new System.Drawing.Point(20, 81);
             this.TxtResultado.Multiline = true;
             this.TxtResultado.Name = "TxtResultado";
@@ -731,87 +732,92 @@
             // 
             // PnlMenu
             // 
-            this.PnlMenu.BackColor = System.Drawing.Color.Silver;
-            this.PnlMenu.Controls.Add(this.BtnIntegracion);
-            this.PnlMenu.Controls.Add(this.BtnDerivacion);
-            this.PnlMenu.Controls.Add(this.BtnFactorizacion);
+            this.PnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.PnlMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PnlMenu.Controls.Add(this.BtnModo);
+            this.PnlMenu.Controls.Add(this.BtnSeparable);
+            this.PnlMenu.Controls.Add(this.BtnExacta);
+            this.PnlMenu.Controls.Add(this.BtnIntegracion);
             this.PnlMenu.Location = new System.Drawing.Point(23, 54);
             this.PnlMenu.Name = "PnlMenu";
-            this.PnlMenu.Size = new System.Drawing.Size(210, 177);
-            this.PnlMenu.TabIndex = 47;
-            // 
-            // BtnIntegracion
-            // 
-            this.BtnIntegracion.BackColor = System.Drawing.Color.Transparent;
-            this.BtnIntegracion.FlatAppearance.BorderSize = 0;
-            this.BtnIntegracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIntegracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnIntegracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.BtnIntegracion.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.Z;
-            this.BtnIntegracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIntegracion.Location = new System.Drawing.Point(7, 138);
-            this.BtnIntegracion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnIntegracion.Name = "BtnIntegracion";
-            this.BtnIntegracion.Size = new System.Drawing.Size(185, 32);
-            this.BtnIntegracion.TabIndex = 49;
-            this.BtnIntegracion.Text = "Integrante";
-            this.BtnIntegracion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnIntegracion.UseVisualStyleBackColor = false;
-            // 
-            // BtnDerivacion
-            // 
-            this.BtnDerivacion.BackColor = System.Drawing.Color.Transparent;
-            this.BtnDerivacion.FlatAppearance.BorderSize = 0;
-            this.BtnDerivacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDerivacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDerivacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.BtnDerivacion.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.Y;
-            this.BtnDerivacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDerivacion.Location = new System.Drawing.Point(7, 93);
-            this.BtnDerivacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnDerivacion.Name = "BtnDerivacion";
-            this.BtnDerivacion.Size = new System.Drawing.Size(185, 32);
-            this.BtnDerivacion.TabIndex = 48;
-            this.BtnDerivacion.Text = "Exacta";
-            this.BtnDerivacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDerivacion.UseVisualStyleBackColor = false;
-            // 
-            // BtnFactorizacion
-            // 
-            this.BtnFactorizacion.BackColor = System.Drawing.Color.Transparent;
-            this.BtnFactorizacion.FlatAppearance.BorderSize = 0;
-            this.BtnFactorizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnFactorizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFactorizacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.BtnFactorizacion.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.X;
-            this.BtnFactorizacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnFactorizacion.Location = new System.Drawing.Point(7, 49);
-            this.BtnFactorizacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnFactorizacion.Name = "BtnFactorizacion";
-            this.BtnFactorizacion.Size = new System.Drawing.Size(190, 32);
-            this.BtnFactorizacion.TabIndex = 47;
-            this.BtnFactorizacion.Text = "Separable";
-            this.BtnFactorizacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnFactorizacion.UseVisualStyleBackColor = false;
+            this.PnlMenu.Padding = new System.Windows.Forms.Padding(10);
+            this.PnlMenu.Size = new System.Drawing.Size(186, 0);
+            this.PnlMenu.TabIndex = 50;
             // 
             // BtnModo
             // 
-            this.BtnModo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnModo.BackColor = System.Drawing.Color.Black;
+            this.BtnModo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BtnModo.FlatAppearance.BorderSize = 0;
             this.BtnModo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnModo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.BtnModo.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.Oscuro_2;
             this.BtnModo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnModo.Location = new System.Drawing.Point(7, 7);
+            this.BtnModo.Location = new System.Drawing.Point(13, 12);
             this.BtnModo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModo.Name = "BtnModo";
-            this.BtnModo.Size = new System.Drawing.Size(185, 32);
+            this.BtnModo.Size = new System.Drawing.Size(165, 32);
             this.BtnModo.TabIndex = 46;
-            this.BtnModo.Text = "       Dark";
+            this.BtnModo.Text = "Dark";
             this.BtnModo.UseVisualStyleBackColor = false;
             this.BtnModo.Click += new System.EventHandler(this.BtnModo_Click);
+            // 
+            // BtnSeparable
+            // 
+            this.BtnSeparable.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSeparable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnSeparable.FlatAppearance.BorderSize = 0;
+            this.BtnSeparable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSeparable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSeparable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BtnSeparable.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.X;
+            this.BtnSeparable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSeparable.Location = new System.Drawing.Point(13, 48);
+            this.BtnSeparable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnSeparable.Name = "BtnSeparable";
+            this.BtnSeparable.Size = new System.Drawing.Size(165, 32);
+            this.BtnSeparable.TabIndex = 47;
+            this.BtnSeparable.Text = "Separable";
+            this.BtnSeparable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSeparable.UseVisualStyleBackColor = false;
+            // 
+            // BtnExacta
+            // 
+            this.BtnExacta.BackColor = System.Drawing.Color.Transparent;
+            this.BtnExacta.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnExacta.FlatAppearance.BorderSize = 0;
+            this.BtnExacta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExacta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExacta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BtnExacta.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.Y;
+            this.BtnExacta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnExacta.Location = new System.Drawing.Point(13, 84);
+            this.BtnExacta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnExacta.Name = "BtnExacta";
+            this.BtnExacta.Size = new System.Drawing.Size(165, 32);
+            this.BtnExacta.TabIndex = 48;
+            this.BtnExacta.Text = "Exacta";
+            this.BtnExacta.UseVisualStyleBackColor = false;
+            // 
+            // BtnIntegracion
+            // 
+            this.BtnIntegracion.BackColor = System.Drawing.Color.Transparent;
+            this.BtnIntegracion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnIntegracion.FlatAppearance.BorderSize = 0;
+            this.BtnIntegracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIntegracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnIntegracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.BtnIntegracion.Image = global::Calculadora_de_ecuaciones_diferenciales.Properties.Resources.Z;
+            this.BtnIntegracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnIntegracion.Location = new System.Drawing.Point(13, 120);
+            this.BtnIntegracion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnIntegracion.Name = "BtnIntegracion";
+            this.BtnIntegracion.Size = new System.Drawing.Size(165, 32);
+            this.BtnIntegracion.TabIndex = 49;
+            this.BtnIntegracion.Text = "Integrante";
+            this.BtnIntegracion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnIntegracion.UseVisualStyleBackColor = false;
             // 
             // BtnMenu
             // 
@@ -881,6 +887,7 @@
             this.Padding = new System.Windows.Forms.Padding(20);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "d";
+            this.Load += new System.EventHandler(this.FrmCalculator_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Delizar_MouseDown);
             this.FlPnlZonaBotones.ResumeLayout(false);
             this.PnlPantalla.ResumeLayout(false);
@@ -915,7 +922,7 @@
         private System.Windows.Forms.Button Btn6;
         private System.Windows.Forms.Button Btn5;
         private System.Windows.Forms.Button Btn4;
-        private System.Windows.Forms.Button BtnYY;
+        private System.Windows.Forms.Button BtnY;
         private System.Windows.Forms.Button BtnPunto;
         private System.Windows.Forms.Button Btn3;
         private System.Windows.Forms.Button Btn2;
@@ -934,11 +941,11 @@
         private System.Windows.Forms.Button BtnCerrar;
         private System.Windows.Forms.Button BtnMinimizar;
         private System.Windows.Forms.Button BtnMenu;
-        private System.Windows.Forms.Panel PnlMenu;
         private System.Windows.Forms.Button BtnIntegracion;
-        private System.Windows.Forms.Button BtnDerivacion;
-        private System.Windows.Forms.Button BtnFactorizacion;
+        private System.Windows.Forms.Button BtnExacta;
+        private System.Windows.Forms.Button BtnSeparable;
         private System.Windows.Forms.Button BtnModo;
+        private System.Windows.Forms.FlowLayoutPanel PnlMenu;
     }
 }
 

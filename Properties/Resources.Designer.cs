@@ -73,6 +73,16 @@ namespace Calculadora_de_ecuaciones_diferenciales.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cerrar_2 {
+            get {
+                object obj = ResourceManager.GetObject("Cerrar_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Claro {
             get {
                 object obj = ResourceManager.GetObject("Claro", resourceCulture);
@@ -103,9 +113,29 @@ namespace Calculadora_de_ecuaciones_diferenciales.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Menu_2 {
+            get {
+                object obj = ResourceManager.GetObject("Menu_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Minimizar {
             get {
                 object obj = ResourceManager.GetObject("Minimizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Minimizar_2 {
+            get {
+                object obj = ResourceManager.GetObject("Minimizar_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
