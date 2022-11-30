@@ -37,9 +37,8 @@ namespace POO22B_GPJA
         //-------------------------------------------------------------------------
         //Método Integrador que recibe a la ecuación de la forma dx/x como string
         //-------------------------------------------------------------------------
-
         //Método por Javier Hernandez
-        public string DerivarX(string Integral)
+        public string IntegrarX(string Integral)
         {
             this.Integral = Integral;
 
@@ -69,9 +68,7 @@ namespace POO22B_GPJA
                 
                 return null;
             }
-            
             MessageBox.Show("Integral no válida");
-            
             return null;
         }
     }
