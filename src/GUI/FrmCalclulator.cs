@@ -32,6 +32,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Atributos.
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        int Modo;
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //Contructor.
@@ -40,6 +41,8 @@ namespace Calculadora_de_ecuaciones_diferenciales
         {
             InitializeComponent();
             Redondear();
+            PnlMenu.Height = 0;
+            Modo = 0; 
         }
 
         #region Método para redondear componentes.
@@ -63,47 +66,47 @@ namespace Calculadora_de_ecuaciones_diferenciales
         private void Redondear()
         {
             //Componentes a los que se le aplica el redondeo.
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 50, 50));
             PnlPantalla.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, PnlPantalla.Width, PnlPantalla.Height, 25, 25));
-            BtnLog.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLog.Width, BtnLog.Height, 15, 15));
-            BtnClc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnClc.Width, BtnClc.Height, 15, 15));
+            //BtnLog.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLog.Width, BtnLog.Height, 15, 15));
+            BtnAc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnAc.Width, BtnAc.Height, 15, 15));
             BtnDel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDel.Width, BtnDel.Height, 15, 15));
             BtnCalcular.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnCalcular.Width, BtnCalcular.Height, 15, 15));
             BtnRaiz.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnRaiz.Width, BtnRaiz.Height, 15, 15));
             BtnLn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLn.Width, BtnLn.Height, 15, 15));
             BtnPotencia.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPotencia.Width, BtnPotencia.Height, 15, 15));
             Btn_e.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn_e.Width, Btn_e.Height, 15, 15));
-            Btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLn.Width, BtnLn.Height, 15, 15));
+            BtnD.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnLn.Width, BtnLn.Height, 15, 15));
             Btnpiπ.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btnpiπ.Width, Btnpiπ.Height, 15, 15));
-            BtnMayorQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMayorQue.Width, BtnMayorQue.Height, 15, 15));
-            BtnMenorQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMenorQue.Width, BtnMenorQue.Height, 15, 15));
-            BtnMayorOIgualQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMayorOIgualQue.Width, BtnMayorOIgualQue.Height, 15, 15));
-            BtnMenorOIgualQue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMenorOIgualQue.Width, BtnMenorOIgualQue.Height, 15, 15));
-            BtnArrova.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnArrova.Width, BtnArrova.Height, 15, 15));
+            BtnDY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDY.Width, BtnDY.Height, 15, 15));
+            BtnDX.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDX.Width, BtnDX.Height, 15, 15));
+            BtnDYDX.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDYDX.Width, BtnDYDX.Height, 15, 15));
+            BtnDXDY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDXDY.Width, BtnDXDY.Height, 15, 15));
+            BtnIntegral.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnIntegral.Width, BtnIntegral.Height, 15, 15));
             BtnAbreParentesis.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnAbreParentesis.Width, BtnAbreParentesis.Height, 15, 15));
             BtnCierraParentesis.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnCierraParentesis.Width, BtnCierraParentesis.Height, 15, 15));
             BtnDivision.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnDivision.Width, BtnDivision.Height, 15, 15));
             BtnMultiplicacion.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnMultiplicacion.Width, BtnMultiplicacion.Height, 15, 15));
-            BtnT.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnT.Width, BtnT.Height, 15, 15));
+            BtnX.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnX.Width, BtnX.Height, 15, 15));
             Btn7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn7.Width, Btn7.Height, 15, 15));
             Btn8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn8.Width, Btn8.Height, 15, 15));
             Btn9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn9.Width, Btn9.Height, 15, 15));
             BtnResta.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnResta.Width, BtnResta.Height, 15, 15));
-            BtnU.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnU.Width, BtnU.Height, 15, 15));
+            BtnYY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnYY.Width, BtnYY.Height, 15, 15));
             Btn4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn4.Width, Btn4.Height, 15, 15));
             Btn5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn5.Width, Btn5.Height, 15, 15));
             Btn6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn6.Width, Btn6.Height, 15, 15));
             BtnSuma.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnSuma.Width, BtnSuma.Height, 15, 15));
-            BtnX.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnX.Width, BtnX.Height, 15, 15));
+            BtnW.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnW.Width, BtnW.Height, 15, 15));
             Btn1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn1.Width, Btn1.Height, 15, 15));
             Btn2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn2.Width, Btn2.Height, 15, 15));
             Btn3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn3.Width, Btn3.Height, 15, 15));
             BtnPunto.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPunto.Width, BtnPunto.Height, 15, 15));
-            BtnY.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnY.Width, BtnY.Height, 15, 15));
+            BtnZ.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnZ.Width, BtnZ.Height, 15, 15));
             Btn0.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Btn0.Width, Btn0.Height, 15, 15));
             BtnIgual.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnIgual.Width, BtnIgual.Height, 15, 15));
-            BtnComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnComa.Width, BtnComa.Height, 15, 15));
-            BtnPuntoyComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPuntoyComa.Width, BtnPuntoyComa.Height, 15, 15));
+            //BtnComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnComa.Width, BtnComa.Height, 15, 15));
+            //BtnPuntoyComa.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, BtnPuntoyComa.Width, BtnPuntoyComa.Height, 15, 15));
         }
         #endregion
 
@@ -123,7 +126,44 @@ namespace Calculadora_de_ecuaciones_diferenciales
         }
         #endregion
 
-        //#region Botones de la calculadora.
+        #region Cambiar modo de la interfaz.
+        //---------------------------------------------------------------------
+        //Crea un rectangulo para redondear el componente.
+        //---------------------------------------------------------------------
+        private void Modos(int Modo)
+        {
+            if (Modo == 1)
+            {
+                BtnModo.Image = Properties.Resources.Oscuro_2;
+                BtnModo.ImageAlign = ContentAlignment.MiddleLeft;
+                BtnModo.Text = "Dark";
+                BtnModo.TextAlign = ContentAlignment.MiddleCenter;
+            }
+            else if (Modo == 0)
+            {
+                BtnModo.Image = Properties.Resources.Claro_2;
+                BtnModo.ImageAlign = ContentAlignment.MiddleLeft;
+                BtnModo.Text = "Light";
+                BtnModo.TextAlign = ContentAlignment.MiddleCenter;
+            }
+        }
+
+        private void BtnModo_Click(object sender, EventArgs e)
+        {
+            if (Modo == 0)
+            {
+                Modos(Modo);
+                Modo = 1;
+            }
+            else if(Modo == 1)
+            {
+                Modos(Modo);
+                Modo = 0;
+            }
+        }
+        #endregion
+
+        #region Botones de la calculadora.
         //---------------------------------------------------------------------
         //Permitir mostrar la ecuación inicial en la parte superior
         //y el resultado de esta en la parte infeior de la pantalla.
@@ -131,18 +171,23 @@ namespace Calculadora_de_ecuaciones_diferenciales
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
             TxtEcuacionInicial.Text = TxtResultado.Text;
-            TxtResultado.Text = "Resultado";
+            TxtResultado.Text = "";
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
-            TxtEcuacionInicial.Clear();
-            TxtResultado.Clear();
+            string Ec = TxtResultado.Text;
+            if (Ec != "")
+            {
+                Ec = TxtResultado.Text.Remove(TxtResultado.Text.Length - 1);
+                TxtResultado.Text = Ec;
+            }
         }
 
-        private void BtnClc_Click(object sender, EventArgs e)
+        private void BtnAc_Click(object sender, EventArgs e)
         {
-            //TODO:
+            TxtEcuacionInicial.Clear();
+            TxtResultado.Clear();
         }
 
         private void BtnLog_Click(object sender, EventArgs e)
@@ -150,7 +195,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
             //TODO:
         }
 
-        private void Btn_Click(object sender, EventArgs e)
+        private void BtnD_Click(object sender, EventArgs e)
         {
             //TODO:
         }
@@ -175,24 +220,24 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = TxtResultado.Text + "√";
         }
 
-        private void BtnMenorOIgualQue_Click(object sender, EventArgs e)
+        private void BtnDXDY_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "<=";
         }
 
-        private void BtnMayorOIgualQue_Click(object sender, EventArgs e)
+        private void BtnDYDX_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + ">=";
         }
 
-        private void BtnMenorQue_Click(object sender, EventArgs e)
+        private void BtnDY_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "<";
+            TxtResultado.Text = TxtResultado.Text + "dy";
         }
 
-        private void BtnMayorQue_Click(object sender, EventArgs e)
+        private void BtnDX_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + ">";
+            TxtResultado.Text = TxtResultado.Text + "dx";
         }
 
         private void Btnpiπ_Click(object sender, EventArgs e)
@@ -220,7 +265,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = TxtResultado.Text + "(";
         }
 
-        private void BtnArrova_Click(object sender, EventArgs e)
+        private void BtnIntegral_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "@";
         }
@@ -245,9 +290,9 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = TxtResultado.Text + "7";
         }
 
-        private void BtnT_Click(object sender, EventArgs e)
+        private void BtnX_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "T";
+            TxtResultado.Text = TxtResultado.Text + "x";
         }
 
         private void BtnSuma_Click(object sender, EventArgs e)
@@ -270,9 +315,9 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = TxtResultado.Text + "4";
         }
 
-        private void BtnU_Click(object sender, EventArgs e)
+        private void BtnY_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "u";
+            TxtResultado.Text = TxtResultado.Text + "y";
         }
 
         private void BtnPunto_Click(object sender, EventArgs e)
@@ -295,21 +340,11 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = TxtResultado.Text + "1";
         }
 
-        private void BtnX_Click(object sender, EventArgs e)
+        private void BtnW_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "x";
+            TxtResultado.Text = TxtResultado.Text + "w";
         }
-
-        private void BtnPuntoyComa_Click(object sender, EventArgs e)
-        {
-            TxtResultado.Text = TxtResultado.Text + ";";
-        }
-
-        private void BtnComa_Click(object sender, EventArgs e)
-        {
-            TxtResultado.Text = TxtResultado.Text + ",";
-        }
-
+        
         private void BtnIgual_Click(object sender, EventArgs e)
         {
             TxtResultado.Text = TxtResultado.Text + "=";
@@ -320,9 +355,36 @@ namespace Calculadora_de_ecuaciones_diferenciales
             TxtResultado.Text = TxtResultado.Text + "0";
         }
 
-        private void BtnY_Click(object sender, EventArgs e)
+        private void BtnZ_Click(object sender, EventArgs e)
         {
-            TxtResultado.Text = TxtResultado.Text + "y";
+            TxtResultado.Text = TxtResultado.Text + "z";
         }
+#endregion
+
+        #region Botones de la barra superior.
+        private void BtnMenu_Click(object sender, EventArgs e)
+        {
+            if (PnlMenu.Height == 145)
+            {
+                PnlMenu.Height = 0;
+                BtnMenu.BackColor = Color.Transparent;
+            }
+            else if (PnlMenu.Height == 0)
+            {
+                PnlMenu.Height = 145;
+                BtnMenu.BackColor = PnlMenu.BackColor;
+            }
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void BtnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        #endregion
     }
 }
