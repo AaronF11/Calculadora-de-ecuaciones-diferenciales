@@ -41,7 +41,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         // +-------------------------------------------------------------------+
         // | Como el método parte la ecuación para ser tratada posteriormente  |
         // +-------------------------------------------------------------------+
-        public abstract void partirEcuacion();
+        public abstract void PartirEcuacion();
 
         // +-------------------------------------------------------------------+
         // | Recoger los signos de la ecuación y almacenarlos                  |
