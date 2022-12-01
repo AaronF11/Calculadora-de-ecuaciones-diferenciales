@@ -19,7 +19,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
 
         private void TmrLoadingScreen_Tick(object sender, EventArgs e)
         {
-            PbLoading.Value += 1;
+            PbLoading.Value += 4;
 
             if (PbLoading.Value > 15)
             {

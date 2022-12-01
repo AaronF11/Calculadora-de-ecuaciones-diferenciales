@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmLoadingScreen.cs">
+    <Compile Include="src\GUI\FrmLoadingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLoadingScreen.Designer.cs">
+    <Compile Include="src\GUI\FrmLoadingScreen.Designer.cs">
       <DependentUpon>FrmLoadingScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,7 +67,7 @@
       <DependentUpon>FrmCalclulator.cs</DependentUpon>
     </Compile>
     <Compile Include="src\GUI\Program.cs" />
-    <EmbeddedResource Include="FrmLoadingScreen.resx">
+    <EmbeddedResource Include="src\GUI\FrmLoadingScreen.resx">
       <DependentUpon>FrmLoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
