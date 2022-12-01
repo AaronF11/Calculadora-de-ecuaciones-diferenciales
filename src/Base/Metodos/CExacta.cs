@@ -70,7 +70,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 
             Integral = new CIntegral();
 
-            MessageBox.Show(Integral.Integrar(dxConstantes[0]));
+            //MessageBox.Show(Integral.Integrar(dxConstantes[0])); Comentado en lo que se resuelve xd
 
         }
 
