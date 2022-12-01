@@ -22,12 +22,55 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
         //-------------------------
         protected string dx;
         protected string dy;
+        protected CDerivada Derivada;
+        protected CIntegral Integral;
+        protected List<string> dxConstantes;
+        protected List<string> dyConstantes;
+
+        private Regex ExprConstantes;
+        private MatchCollection dxCoincidencia;
+        private MatchCollection dyCoincidencia;
 
         //-------------------------
         // Constructor
         //-------------------------
         public CExacta(string Ecuacion) : base(Ecuacion)
         {
+            // Inicializar regular expr de constantes
+            ExprConstantes = new Regex("[0-9]*[a-z]");
+        }
+
+        public void ObtenerConstantes()
+        {
+            // Inicializar lista de constantes
+            dxConstantes = new List<string>();
+            dyConstantes = new List<string>();
+
+            // Limpiar listas
+            dxConstantes.Clear();
+            dyConstantes.Clear();
+
+            // Obtener constantes
+            dxCoincidencia = ExprConstantes.Matches(dx);
+            dyCoincidencia = ExprConstantes.Matches(dy);
+
+            // Obtener constantes de dx
+            foreach(Match Coincidencia in dxCoincidencia)
+            {
+                dxConstantes.Add(Coincidencia.Value);
+                MessageBox.Show(Coincidencia.Value);
+            }
+
+            // Obtener constanes de dy
+            foreach(Match Coincidencia in dyCoincidencia)
+            {
+                dyConstantes.Add(Coincidencia.Value); 
+                MessageBox.Show(Coincidencia.Value);
+            }
+
+            Integral = new CIntegral();
+
+            MessageBox.Show(Integral.Integrar(dxConstantes[0]));
 
         }
 
@@ -80,7 +123,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             // Mostrar variables
             MessageBox.Show($"Contenidos: {dx} {dy}");
 
-            new CIntegral().DerivarX(dx);
+            new CIntegral().IntegrarX(dx);
         }
     }
 }
