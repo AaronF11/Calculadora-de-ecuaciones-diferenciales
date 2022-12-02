@@ -30,6 +30,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
 
         protected Regex ExprSignos;
         protected Regex ExprPartes;
+       
 
         //-------------------------
         // Constructor
@@ -43,6 +44,12 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         // | Como el método parte la ecuación para ser tratada posteriormente  |
         // +-------------------------------------------------------------------+
         public abstract void PartirEcuacion();
+
+        // +-------------------------------------------------------------------+
+        // | Analiza la entrada del usuario, para validar si coincide con el   |
+        // | Tipo                                                              |
+        // +-------------------------------------------------------------------+
+        public abstract DialogResult ValidarEcuacion();
 
         // +-------------------------------------------------------------------+
         // | Recoger los signos de la ecuación y almacenarlos                  |
