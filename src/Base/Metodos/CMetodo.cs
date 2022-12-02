@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas;
+using POO22B_GPJA;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -22,7 +24,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         //-------------------------
         public List<string> Signos;
         public List<string> PartesEcuacion;
-
+        
+        protected List<string> Monomios;
         protected string Ecuacion;
     
         protected MatchCollection ColeccionSignos;
@@ -30,7 +33,18 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
 
         protected Regex ExprSignos;
         protected Regex ExprPartes;
-       
+
+        protected string dx;
+        protected string dy;
+        protected CDerivada Derivada;
+        protected CIntegral Integral;
+        protected List<string> dxConstantes;
+        protected List<string> dyConstantes;
+
+        protected Regex ExprMonomios;
+        protected MatchCollection dxCoincidencia;
+        protected MatchCollection dyCoincidencia;
+
 
         //-------------------------
         // Constructor
@@ -38,6 +52,9 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         public CMetodo(string Ecuacion)
         {
             this.Ecuacion = Ecuacion;
+
+            // Inicializar regex para monomios
+            ExprMonomios = new Regex("[0-9]*[a-z]\\^*[0-9]*\\/*[0-9]*");
         }
 
         // +-------------------------------------------------------------------+

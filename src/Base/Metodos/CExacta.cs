@@ -20,24 +20,14 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
         //-------------------------
         // Atributos
         //-------------------------
-        protected string dx;
-        protected string dy;
-        protected CDerivada Derivada;
-        protected CIntegral Integral;
-        protected List<string> dxConstantes;
-        protected List<string> dyConstantes;
-
-        private Regex ExprConstantes;
-        private MatchCollection dxCoincidencia;
-        private MatchCollection dyCoincidencia;
-
+        
         //-------------------------
         // Constructor
         //-------------------------
         public CExacta(string Ecuacion) : base(Ecuacion)
         {
             // Inicializar regular expr de constantes
-            ExprConstantes = new Regex("[0-9]*[a-z]");
+            ExprMonomios = new Regex("[0-9]*[a-z]\\^*[0-9]*\\/*[0-9]*");
         }
 
         public void ObtenerConstantes()
@@ -51,8 +41,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             dyConstantes.Clear();
 
             // Obtener constantes
-            dxCoincidencia = ExprConstantes.Matches(dx);
-            dyCoincidencia = ExprConstantes.Matches(dy);
+            dxCoincidencia = ExprMonomios.Matches(dx);
+            dyCoincidencia = ExprMonomios.Matches(dy);
 
             // Obtener constantes de dx
             foreach(Match Coincidencia in dxCoincidencia)
@@ -71,7 +61,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             Integral = new CIntegral();
 
             //MessageBox.Show(Integral.Integrar(dxConstantes[0])); Comentado en lo que se resuelve xd
-
+            
         }
 
         public override void PartirEcuacion()
@@ -124,6 +114,11 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             MessageBox.Show($"Contenidos: {dx} {dy}");
 
             new CIntegral().IntegrarX(dx);
+        }
+
+        public override DialogResult ValidarEcuacion()
+        {
+            throw new NotImplementedException();
         }
     }
 }
