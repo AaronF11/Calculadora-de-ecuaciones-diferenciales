@@ -139,7 +139,36 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 
             // return DialogResult.Ok;
 
-            throw new NotImplementedException();
+            string Mdy;
+            string Ndx;
+
+            Mdy = "";
+            Ndx = "";
+
+            foreach(string monomio in dxMonomios)
+            {
+                if (monomio.Contains("y"))
+                {
+                    // Derivar monomio respecto a la variable y
+
+                }
+            }
+
+            foreach(string monomio in dyMonomios)
+            {
+                if (monomio.Contains("x"))
+                {
+                    // Derivar monomio respecto a la variable x
+
+                }
+            }
+
+            if (Mdy == Ndx)
+            {
+                return DialogResult.OK;
+            }
+
+            return DialogResult.No;
         }
     }
 }
