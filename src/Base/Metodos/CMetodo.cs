@@ -38,8 +38,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         protected string dy;
         protected CDerivada Derivada;
         protected CIntegral Integral;
-        protected List<string> dxConstantes;
-        protected List<string> dyConstantes;
+        protected List<string> dxMonomios;
+        protected List<string> dyMonomios;
 
         protected Regex ExprMonomios;
         protected MatchCollection dxCoincidencia;

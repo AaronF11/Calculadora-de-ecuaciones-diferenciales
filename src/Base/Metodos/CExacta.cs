@@ -31,12 +31,12 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
         public void ObtenerConstantes()
         {
             // Inicializar lista de constantes
-            dxConstantes = new List<string>();
-            dyConstantes = new List<string>();
+            dxMonomios = new List<string>();
+            dyMonomios = new List<string>();
 
             // Limpiar listas
-            dxConstantes.Clear();
-            dyConstantes.Clear();
+            dxMonomios.Clear();
+            dyMonomios.Clear();
 
             // Obtener constantes
             dxCoincidencia = ExprMonomios.Matches(dx);
@@ -45,20 +45,20 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             // Obtener constantes de dx
             foreach(Match Coincidencia in dxCoincidencia)
             {
-                dxConstantes.Add(Coincidencia.Value);
+                dxMonomios.Add(Coincidencia.Value);
                 MessageBox.Show(Coincidencia.Value);
             }
 
             // Obtener constanes de dy
             foreach(Match Coincidencia in dyCoincidencia)
             {
-                dyConstantes.Add(Coincidencia.Value); 
+                dyMonomios.Add(Coincidencia.Value); 
                 MessageBox.Show(Coincidencia.Value);
             }
 
             Integral = new CIntegral();
 
-            //MessageBox.Show(Integral.Integrar(dxConstantes[0])); Comentado en lo que se resuelve xd
+            //MessageBox.Show(Integral.Integrar(dxMonomios[0])); Comentado en lo que se resuelve xd
             
         }
 
@@ -124,10 +124,10 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             // Pasos para comprobar la ED
 
             // Agarrar los monomios presentes en dx/M
-            // y derivarlos respecto a y
+            // y derivarlos respecto a y e ignorar aquellas variables que no sean y
 
             // Agarrar los monomios presentes en dy/N
-            // y derivarlos respecto a x
+            // y derivarlos respecto a x e ignorar aquellas variables que no sean y
 
             // Meter los resultados en un string de cada lado
             // para posteriormente comprobar si el valor es identico
