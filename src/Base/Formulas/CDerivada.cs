@@ -8,7 +8,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
     //---------------------------------------------------------------------
     //Clase que deriva.
-    // CMJL. Jorge Luis Cruz Macias. 28/11/2022   
+    // CMJL. Jorge Luis Cruz Macias. 28/11/2022
+    // JAGL. Juan Antonio Gil Lopez.
     //---------------------------------------------------------------------
 
     public class CDerivada
@@ -30,33 +31,31 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-------------------------
         // Constructor
         //-------------------------
-        public CDerivada(double Coeficiente,double Exponente, String Variable)
+        public CDerivada()
         {
-            this.Coeficiente = Coeficiente;
-            this.Exponente = Exponente;
-            this.Variable = Variable;
+
         }
 
         //-----------------------------------------------------//
         //Método que resuelve derivada: Potencia f(x)=nx^n-1
         //-----------------------------------------------------//
         public string Derivar()
-         {          
+        {
             //En estas variables se aguardan los datos una vez realizadas las operaciones básicas 
-            double NuevoCoeficiente;
-            double NuevoExponente;
-            String NuevaVariable;
+            double Coeficiente;
+            double Exponente;
+            String Variable;
 
-            String ResultadoDerivada;           
+            String ResultadoDerivada;
 
             //Se realizan las operaciones básicas 
-            NuevoCoeficiente = Exponente * Coeficiente;
-            NuevoExponente = Exponente - 1;
-            NuevaVariable = Variable;
+            Coeficiente = this.Exponente * this.Coeficiente;
+            Exponente = this.Exponente - 1;
+            Variable = this.Variable;
 
             //Aguarda el resultado final de la derivada 
-            return ResultadoDerivada = NuevoCoeficiente.ToString() + NuevaVariable+ "^" + NuevoExponente.ToString();           
-         }
+            return ResultadoDerivada = Coeficiente.ToString() + Variable + "^" + Exponente.ToString();
+        }
 
         //-----------------------------------------------------//
         //Método que resuelve derivada...
@@ -66,29 +65,31 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             //variables 
             int TerminoUno;
             int TerminoDos;
-         
+
             int Resultado;
             int resultado2;
 
-            double NuevoCoeficiente;
-            double NuevoExponente;
-            String NuevaVariable;
+            double Coeficiente;
+            double Exponente;
+            String Variable;
 
             //Segundo término 
-            int NuevoCoeficiente2;
-            int NuevoExponente2;
-            String NuevaVariable2;
+            int Coeficiente2;
+            int Exponente2;
+            String Variable2;
 
             string ResultadoExpDerivada;
-           
+
             //Se deriva lo de adentro
-            NuevoCoeficiente = Coeficiente * Exponente;
-            NuevoExponente = Exponente - 1;
+            Coeficiente = this.Coeficiente * this.Exponente;
+            Exponente = this.Exponente - 1;
 
-            NuevoCoeficiente2 = Coeficiente2 * Exponente2;
-            NuevoExponente2 = Exponente2;
+            Coeficiente2 = this.Coeficiente2 * this.Exponente2;
+            Exponente2 = this.Exponente2;
 
-            ResultadoExpDerivada = Convert.ToString(Exponente * NuevoCoeficiente2);
+            ResultadoExpDerivada = Convert.ToString(this.Exponente * Coeficiente2);
         }
     }
 }
+
+

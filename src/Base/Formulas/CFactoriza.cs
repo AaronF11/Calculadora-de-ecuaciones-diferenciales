@@ -31,56 +31,32 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-------------------------
         static void CFactor(string[] args) // Cambia el nombre de la función
         {
-            //"PrimerNumero" y "SegundoNumero" representa cada uno un numero real 
-            //"b y d" Representan el factor comun de cada numero. 
-            int PrimerNumero, b, SegundoNumero, d;
+            Console.WriteLine("Ingrese el primer número");
+            int num1 = Convert.ToInt32(Console.ReadLine());
 
-            //Inicializa el numero que escribimos
+            Console.WriteLine("Ingrese el segundo número");
+            int num2 = Convert.ToInt32(Console.ReadLine());
 
-            //(Esto es lo que se pusiera en el textbox pero lo pongo en consola para pruebas)
+            // Seleccionamos el mayor y el menor para asignarlos
+            // a las variables "a" y "b" respectivamente
+            int a = Math.Max(num1, num2);
+            int b = Math.Min(num1, num2);
 
-            Console.WriteLine(" Ingresa un numero: ");
-            
-            PrimerNumero = int.Parse(Console.ReadLine()); //Primer termino
+            // Declaramos la variable que guardará el resultado
+            int MaximoComunDivisor;
 
-            Console.WriteLine(" Ingresa otro numero: ");
-
-            SegundoNumero = int.Parse(Console.ReadLine()); //Segundo termino
-
-            //---------------------------------------------------
-            //Formula para sacar el comun divisor (Factor Comun).
-            //---------------------------------------------------
-
-            for (b = 1; b <= PrimerNumero; b++) //Factor comun del primer numero
+            // Creamos el ciclo encargado de hacer las iteraciones
+            do
             {
-                if (PrimerNumero % b == 0) 
-                {
-                    //Lee y muestra la lista de los factores multiplos del Primer termino
-                }
-                Console.WriteLine(b + " es un factor de  " + PrimerNumero); 
-            }
-            Console.ReadLine(); 
+                MaximoComunDivisor = b; // Guardamos el divisor en el resultado
+                b = a % b; // Guardamos el resto en el divisor
+                a = MaximoComunDivisor; // El divisor pasa al dividendo
+            } while (b != 0);
 
-            for (d = 1; d <= SegundoNumero; d++) //Factor comun del segundo numero
-            {
-                if (SegundoNumero % d == 0)
-                {
-                    //Lee y muestra la lista de los factores multiplos del Segundo termino
-                    Console.WriteLine(d + " es un factor de  " + SegundoNumero); 
-                }
-            }
-            Console.ReadLine();
+            // Mostramos como resultado el último resto no nulo
+            Console.WriteLine("El M.C.D. entre " + num1 + " y " + num2 + " es: " + MaximoComunDivisor);
 
-            //Lo siguiente seria hacer un for para tomar los factores comunes de ambos términos y si llega a haber algun
-            //numero igual entre ambos factores comunes se toma para ser el FACTOR COMUN AMBOS TERMINOS
-        
-
-
-
-
-
-
-
+            Console.ReadKey(true);
         }
     }
 }
