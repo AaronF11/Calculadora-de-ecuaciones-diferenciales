@@ -29,6 +29,11 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             throw new NotImplementedException();
         }
 
+        public override void ResolverEcuacion()
+        {
+            throw new NotImplementedException();
+        }
+
         public override DialogResult ValidarEcuacion()
         {
             throw new NotImplementedException();

@@ -26,8 +26,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
         //-------------------------
         public CExacta(string Ecuacion) : base(Ecuacion)
         {
-            // Inicializar regular expr de constantes
-            ExprMonomios = new Regex("[0-9]*[a-z]\\^*[0-9]*\\/*[0-9]*");
         }
 
         public void ObtenerConstantes()
@@ -116,8 +114,31 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             new CIntegral().IntegrarX(dx);
         }
 
+        public override void ResolverEcuacion()
+        {
+            throw new NotImplementedException();
+        }
+
         public override DialogResult ValidarEcuacion()
         {
+            // Pasos para comprobar la ED
+
+            // Agarrar los monomios presentes en dx/M
+            // y derivarlos respecto a y
+
+            // Agarrar los monomios presentes en dy/N
+            // y derivarlos respecto a x
+
+            // Meter los resultados en un string de cada lado
+            // para posteriormente comprobar si el valor es identico
+            // si no retornar en el dialog result como no valido
+
+            // return DialogResult.No;
+
+            // o caso contrario 
+
+            // return DialogResult.Ok;
+
             throw new NotImplementedException();
         }
     }

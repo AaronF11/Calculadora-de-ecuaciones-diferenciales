@@ -69,6 +69,11 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         public abstract DialogResult ValidarEcuacion();
 
         // +-------------------------------------------------------------------+
+        // | Resuelve la ecuación del tipo requerido.                          |
+        // +-------------------------------------------------------------------+
+        public abstract void ResolverEcuacion();
+
+        // +-------------------------------------------------------------------+
         // | Recoger los signos de la ecuación y almacenarlos                  |
         // +-------------------------------------------------------------------+
         public void GuardarSignos()
