@@ -23,11 +23,10 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         }
 
         //-----------------------------------------------------//
-        //Método que resuelve derivada: Potencia f(x)=nx^n-1
+        //Método que resuelve derivada: Potencia f(x)= n * x^n-1
         //-----------------------------------------------------//
         public static string Derivar(string Monomio)
         {
-
             //Variables Datos nesesarios para realizar derivada
             int Coeficiente;
             int Exponente;
@@ -54,8 +53,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             NuevoCoeficiente = Exponente * Coeficiente;
             REExponente = Exponente - 1;
 
-
-
             //Se le asigno el valor a SignoExp
             SignoExp = "^";
 
@@ -74,13 +71,9 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                 SignoExp = "^";
             }
 
-
             //Muestra el Resultado
             return ResultadoDerivada = Coeficiente.ToString() + Variable + SignoExp + ExponenteSt;
         }
-
-
-
 
         //---------------------------------------------------------------------------//
         //Método que resuelve la formula 2: "y = ax es igual a y = a" 
@@ -108,12 +101,9 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
             //Formula:
 
-            if (Coeficiente >= 1)
+            if (Coeficiente != 0 && Variable != null && Exponente == 1)
             {
-                if (Variable != null && Exponente == 1)
-                {
-                    ResultadoDeFuncion = Convert.ToString(Coeficiente);
-                }
+                ResultadoDeFuncion = Convert.ToString(Coeficiente);
             }
             return ResultadoDeFuncion;
         }
@@ -143,12 +133,9 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
             //Formula:
 
-            if (Coeficiente == 1)
-            {
-                if (Variable != null && Exponente == 1)
-                {
+            if (Coeficiente == 1 && Variable != null && Exponente == 1)
+            { 
                     ResultadoDeFuncion = Convert.ToString(Coeficiente);
-                }
             }
             return ResultadoDeFuncion;
         }
@@ -156,37 +143,66 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //Método que resuelve la formula 5: "y = v^n es igual a y = n * v^n-1 * v^1" 
         //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
-        public void Formula5()
+        public static string Formula5(string Monomio5)
         {
-            //-----------------------------------------------
-            //Ejemplo de esta formula: (Metodo en proceso)
-            //-----------------------------------------------
+            //----------------------------------------------------------
+            //Esta formula toma como base parte de la primera formula
+            //----------------------------------------------------------
 
-            //variables 
+            //Variables 
             int Coeficiente;
             int Exponente;
-            string Variable;
+            String Variable;
+            String SignoExp;
+            int DerivadaDeVariable;
+            int ExponenteDeVariable;
 
             string ResultadoDeFuncion;
 
-            //Iniacialización
-
+            //Inicialización 
             Coeficiente = 0;
             Exponente = 0;
+            SignoExp = "";
             Variable = "";
-            ResultadoDeFuncion = "";
+
+            int NuevoCoeficiente;  //--> Resultado de la multiplicación Exponente por coeficiente
+            int REExponente;       //--> Resultado de la resta al Exponente 
+
+            String ResultadoDerivada;//--> Contiene la cadena de caracteres la cual representa el resultado de una derivada
+
+            //Contiene el Valor del exponente en tipo String
+            String ExponenteSt;
+
+            //Se realizan las operaciones básicas 
+            NuevoCoeficiente = Exponente * Coeficiente;
+            REExponente = Exponente - 1;
+            DerivadaDeVariable = Coeficiente * Exponente;
+     
+            //EN CONSTRUCCION
+
+            
 
 
-            //Formula:
-            /* (Se ocupa de la formula 3 que pronto realizara mi compañero)
-            if (Coeficiente == 1)
+            //Se le asigno el valor a SignoExp
+            SignoExp = "^";
+
+            //Si el Exponente =1 , el Exponente no se pone 
+
+            if (REExponente == 1)
             {
-                if (Variable != null && Exponente == 1)
-                {
-                    ResultadoDeFuncion = Convert.ToString(Coeficiente);
-                }
+                ExponenteSt = Exponente.ToString();
+                ExponenteSt = "";
+                SignoExp = "";
             }
-            */
+            //Si es diferente a 1, Si se pone exponente y se coloca el signo "^"
+            else
+            {
+                ExponenteSt = REExponente.ToString();
+                SignoExp = "^";
+            }
+
+            //Muestra el Resultado
+            return ResultadoDerivada = Coeficiente.ToString() + Variable + SignoExp + ExponenteSt;
 
         }
 
