@@ -89,6 +89,38 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
             ResultadoExpDerivada = Convert.ToString(this.Exponente * Coeficiente2);
         }
+        //---------------------------------------------------------------------------//
+        //Método que resuelve la formula 2: "y = ax es igual a y = a" asignada a JAGL
+        //---------------------------------------------------------------------------//
+        public void Formula2()
+        {
+            //-----------------------------------------------
+            //Ejemplo de esta formula: f(x)=7x  ->  f(x)=7
+            //-----------------------------------------------
+
+            //variables 
+            string Funcion;
+
+            //De la funcion se tomaria el coeficiente, exponente y variable
+
+            Coeficiente = this.Coeficiente;
+            Exponente = this.Exponente;
+            Variable = this.Variable;
+
+            string ResultadoDeFuncion;
+
+            //Formula:
+
+            if(Coeficiente >= 1)
+            {
+                if (Variable != null && Exponente == 1)
+                {
+                    ResultadoDeFuncion = Convert.ToString(Coeficiente);
+                }
+            }
+
+        }
+
     }
 }
 
