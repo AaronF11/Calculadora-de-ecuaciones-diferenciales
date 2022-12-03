@@ -90,7 +90,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             ResultadoExpDerivada = Convert.ToString(this.Exponente * Coeficiente2);
         }
         //---------------------------------------------------------------------------//
-        //Método que resuelve la formula 2: "y = ax es igual a y = a" asignada a JAGL
+        //Método que resuelve la formula 2: "y = ax es igual a y = a" 
+        //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
         public void Formula2()
         {
@@ -118,7 +119,69 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                     ResultadoDeFuncion = Convert.ToString(Coeficiente);
                 }
             }
+        }
+        //---------------------------------------------------------------------------//
+        //Método que resuelve la formula 4: "y = x es igual a y = 1" 
+        //Juan Antonio Gil Lopez
+        //---------------------------------------------------------------------------//
+        public void Formula4()
+        {
+            //-----------------------------------------------
+            //Ejemplo de esta formula: f(x)=x  ->  f(x)=1
+            //-----------------------------------------------
 
+            //variables 
+            string Funcion;
+
+            //De la funcion se tomaria el coeficiente, exponente y variable
+
+            Coeficiente = this.Coeficiente;
+            Exponente = this.Exponente;
+            Variable = this.Variable;
+
+            string ResultadoDeFuncion;
+
+            //Formula:
+
+            if (Coeficiente == 1)
+            {
+                if (Variable != null && Exponente == 1)
+                {
+                    ResultadoDeFuncion = Convert.ToString(Coeficiente);
+                }
+            }
+        }
+        //---------------------------------------------------------------------------//
+        //Método que resuelve la formula 5: "y = v^n es igual a y = n * v^n-1 * v^1" 
+        //Juan Antonio Gil Lopez
+        //---------------------------------------------------------------------------//
+        public void Formula5()
+        {
+            //-----------------------------------------------
+            //Ejemplo de esta formula: (Metodo en proceso)
+            //-----------------------------------------------
+
+            //variables 
+            string Funcion;
+
+            //De la funcion se tomaria el coeficiente, exponente y variable
+
+            Coeficiente = this.Coeficiente;
+            Exponente = this.Exponente;
+            Variable = this.Variable;
+
+            string ResultadoDeFuncion;
+
+            //Formula:
+            /* (Se ocupa de la formula 3 que pronto realizara mi compañero)
+            if (Coeficiente == 1)
+            {
+                if (Variable != null && Exponente == 1)
+                {
+                    ResultadoDeFuncion = Convert.ToString(Coeficiente);
+                }
+            }
+            */
         }
 
     }
