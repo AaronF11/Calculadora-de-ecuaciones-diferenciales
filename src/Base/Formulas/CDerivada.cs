@@ -22,10 +22,10 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
         }
 
-        //-----------------------------------------------------//
+        //-------------------------------------------------------//
         //Método que resuelve derivada: Potencia f(x)= n * x^n-1
         //Jorge Luis Cruz
-        //-----------------------------------------------------//
+        //-------------------------------------------------------//
         public static string Derivar(string Monomio)
         {
             //Variables Datos nesesarios para realizar derivada
@@ -73,7 +73,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
 
             //Muestra el Resultado
-            return ResultadoDerivada = Coeficiente.ToString() + Variable + SignoExp + ExponenteSt;
+            return ResultadoDerivada = NuevoCoeficiente.ToString() + Variable + SignoExp + ExponenteSt;
         }
 
         //---------------------------------------------------------------------------//
@@ -93,7 +93,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
             string ResultadoDeFuncion;
 
-            //Iniasilización
+            //Inicialización
 
             Coeficiente = 0;
             Exponente = 0;
