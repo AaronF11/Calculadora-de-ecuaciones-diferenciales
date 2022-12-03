@@ -7,27 +7,13 @@ using System.Threading.Tasks;
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
     //---------------------------------------------------------------------
-    //Clase que deriva.
+    //Clase que Deriva.
     // CMJL. Jorge Luis Cruz Macias. 28/11/2022
     // JAGL. Juan Antonio Gil Lopez.
     //---------------------------------------------------------------------
 
     public class CDerivada
     {
-        //----------------------------------
-        // Atributos
-        //----------------------------------
-
-        //Atributos 
-        public double Coeficiente;
-        public double Exponente;
-        public string Variable;
-
-        //Atributos del segundo termino 
-        public int Coeficiente2;
-        public int Exponente2;
-        public string Variable2;
-
         //-------------------------
         // Constructor
         //-------------------------
@@ -39,107 +25,121 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-----------------------------------------------------//
         //Método que resuelve derivada: Potencia f(x)=nx^n-1
         //-----------------------------------------------------//
-        public string Derivar()
+        public static string Derivar(string Monomio)
         {
-            //En estas variables se aguardan los datos una vez realizadas las operaciones básicas 
-            double Coeficiente;
-            double Exponente;
-            String Variable;
 
-            String ResultadoDerivada;
+            //Variables Datos nesesarios para realizar derivada
+            int Coeficiente;
+            int Exponente;
+            String Variable;
+            String SignoExp;
+
+            //Inicialización 
+
+            Coeficiente = 0;
+            Exponente = 0;
+            SignoExp = "";
+            Variable = "";
+            //En estas variables se aguardan los datos una vez realizadas las operaciones básicas 
+
+            int NuevoCoeficiente;  //--> Resultado de la multiplicación Exponente por coeficiente
+            int REExponente;       //--> Resultado de la resta al Exponente 
+
+            String ResultadoDerivada;//--> Contiene la cadena de caracteres la cual representa el resultado de una derivada
+
+            //Contiene el Valor del exponente en tipo String
+            String ExponenteSt;
 
             //Se realizan las operaciones básicas 
-            Coeficiente = this.Exponente * this.Coeficiente;
-            Exponente = this.Exponente - 1;
-            Variable = this.Variable;
+            NuevoCoeficiente = Exponente * Coeficiente;
+            REExponente = Exponente - 1;
 
-            //Aguarda el resultado final de la derivada 
-            return ResultadoDerivada = Coeficiente.ToString() + Variable + "^" + Exponente.ToString();
+
+
+            //Se le asigno el valor a SignoExp
+            SignoExp = "^";
+
+            //Si el Exponente =1 , el Exponente no se pone 
+
+            if (REExponente == 1)
+            {
+                ExponenteSt = Exponente.ToString();
+                ExponenteSt = "";
+                SignoExp = "";
+            }
+            //Si es diferente a 1, Si se pone exponente y se coloca el signo "^"
+            else
+            {
+                ExponenteSt = REExponente.ToString();
+                SignoExp = "^";
+            }
+
+
+            //Muestra el Resultado
+            return ResultadoDerivada = Coeficiente.ToString() + Variable + SignoExp + ExponenteSt;
         }
 
-        //-----------------------------------------------------//
-        //Método que resuelve derivada...
-        //-----------------------------------------------------//
-        public void Derivar2()
-        {
-            //variables 
-            int TerminoUno;
-            int TerminoDos;
 
-            int Resultado;
-            int resultado2;
 
-            double Coeficiente;
-            double Exponente;
-            String Variable;
 
-            //Segundo término 
-            int Coeficiente2;
-            int Exponente2;
-            String Variable2;
-
-            string ResultadoExpDerivada;
-
-            //Se deriva lo de adentro
-            Coeficiente = this.Coeficiente * this.Exponente;
-            Exponente = this.Exponente - 1;
-
-            Coeficiente2 = this.Coeficiente2 * this.Exponente2;
-            Exponente2 = this.Exponente2;
-
-            ResultadoExpDerivada = Convert.ToString(this.Exponente * Coeficiente2);
-        }
         //---------------------------------------------------------------------------//
         //Método que resuelve la formula 2: "y = ax es igual a y = a" 
         //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
-        public void Formula2()
+        public static string Formula2(string Monomio2)
         {
             //-----------------------------------------------
             //Ejemplo de esta formula: f(x)=7x  ->  f(x)=7
             //-----------------------------------------------
 
             //variables 
-            string Funcion;
-
-            //De la funcion se tomaria el coeficiente, exponente y variable
-
-            Coeficiente = this.Coeficiente;
-            Exponente = this.Exponente;
-            Variable = this.Variable;
+            int Coeficiente;
+            int Exponente;
+            string Variable;
 
             string ResultadoDeFuncion;
 
+            //Iniasilización
+
+            Coeficiente = 0;
+            Exponente = 0;
+            Variable = "";
+            ResultadoDeFuncion = "";
+
             //Formula:
 
-            if(Coeficiente >= 1)
+            if (Coeficiente >= 1)
             {
                 if (Variable != null && Exponente == 1)
                 {
                     ResultadoDeFuncion = Convert.ToString(Coeficiente);
                 }
             }
+            return ResultadoDeFuncion;
         }
         //---------------------------------------------------------------------------//
         //Método que resuelve la formula 4: "y = x es igual a y = 1" 
         //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
-        public void Formula4()
+        public static string Formula4(string Monomio4)
         {
             //-----------------------------------------------
             //Ejemplo de esta formula: f(x)=x  ->  f(x)=1
             //-----------------------------------------------
 
             //variables 
-            string Funcion;
-
-            //De la funcion se tomaria el coeficiente, exponente y variable
-
-            Coeficiente = this.Coeficiente;
-            Exponente = this.Exponente;
-            Variable = this.Variable;
+            int Coeficiente;
+            int Exponente;
+            string Variable;
 
             string ResultadoDeFuncion;
+
+            //Iniacialización
+
+            Coeficiente = 0;
+            Exponente = 0;
+            Variable = "";
+            ResultadoDeFuncion = "";
 
             //Formula:
 
@@ -150,6 +150,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                     ResultadoDeFuncion = Convert.ToString(Coeficiente);
                 }
             }
+            return ResultadoDeFuncion;
         }
         //---------------------------------------------------------------------------//
         //Método que resuelve la formula 5: "y = v^n es igual a y = n * v^n-1 * v^1" 
@@ -162,15 +163,19 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             //-----------------------------------------------
 
             //variables 
-            string Funcion;
-
-            //De la funcion se tomaria el coeficiente, exponente y variable
-
-            Coeficiente = this.Coeficiente;
-            Exponente = this.Exponente;
-            Variable = this.Variable;
+            int Coeficiente;
+            int Exponente;
+            string Variable;
 
             string ResultadoDeFuncion;
+
+            //Iniacialización
+
+            Coeficiente = 0;
+            Exponente = 0;
+            Variable = "";
+            ResultadoDeFuncion = "";
+
 
             //Formula:
             /* (Se ocupa de la formula 3 que pronto realizara mi compañero)
@@ -182,6 +187,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                 }
             }
             */
+
         }
 
     }
