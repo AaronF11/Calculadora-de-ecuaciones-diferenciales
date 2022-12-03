@@ -34,27 +34,12 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         protected Regex ExprSignos;
         protected Regex ExprPartes;
 
-        protected string dx;
-        protected string dy;
-        protected CDerivada Derivada;
-        protected CIntegral Integral;
-        protected List<string> dxMonomios;
-        protected List<string> dyMonomios;
-
-        protected Regex ExprMonomios;
-        protected MatchCollection dxCoincidencia;
-        protected MatchCollection dyCoincidencia;
-
-
         //-------------------------
         // Constructor
         //-------------------------
         public CMetodo(string Ecuacion)
         {
             this.Ecuacion = Ecuacion;
-
-            // Inicializar regex para monomios
-            ExprMonomios = new Regex("[0-9]*[a-z]\\^*[0-9]*\\/*[0-9]*");
         }
 
         // +-------------------------------------------------------------------+
