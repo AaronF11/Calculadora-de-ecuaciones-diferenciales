@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
@@ -28,85 +30,105 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-----------------------------------------------------//
         public static string Derivar(string Monomio)
         {
-            //Variables Datos nesesarios para realizar derivada
-            int Coeficiente;
+            // Variables
+            int Constante;
             int Exponente;
-            String Variable;
-            String SignoExp;
 
-            //Inicialización 
+            string ExponenteStr;
+            string Variable;
 
-            Coeficiente = 0;
-            Exponente = 0;
-            SignoExp = "";
-            Variable = "";
-            //En estas variables se aguardan los datos una vez realizadas las operaciones básicas 
+            // variables para derivar exp fracc
+            int Numerador;
+            int Denominador;
+            string _Numerador;
+            string _Denominador;
 
-            int NuevoCoeficiente;  //--> Resultado de la multiplicación Exponente por coeficiente
-            int REExponente;       //--> Resultado de la resta al Exponente 
+            Constante = Int32.Parse(Regex.Match(Monomio, "-?[0-9]{1,}").Value);
+            Variable = Regex.Match(Monomio, "[a-z]").Value;
+            ExponenteStr = Regex.Match(Monomio, "\\^-?[0-9]{1,}\\/?[0-9]*").Value;
 
-            String ResultadoDerivada;//--> Contiene la cadena de caracteres la cual representa el resultado de una derivada
-
-            //Contiene el Valor del exponente en tipo String
-            String ExponenteSt;
-
-            //Se realizan las operaciones básicas 
-            NuevoCoeficiente = Exponente * Coeficiente;
-            REExponente = Exponente - 1;
-
-            //Se le asigno el valor a SignoExp
-            SignoExp = "^";
-
-            //Si el Exponente =1 , el Exponente no se pone 
-
-            if (REExponente == 1)
+            if (ExponenteStr.Contains("^") &&
+                !ExponenteStr.Contains("/"))
             {
-                ExponenteSt = Exponente.ToString();
-                ExponenteSt = "";
-                SignoExp = "";
-            }
-            //Si es diferente a 1, Si se pone exponente y se coloca el signo "^"
-            else
-            {
-                ExponenteSt = REExponente.ToString();
-                SignoExp = "^";
+                Exponente = Int32.Parse(Regex.Replace(ExponenteStr, "\\^", ""));
+
+                Constante *= Exponente;
+
+                Exponente -= 1;
+
+                if (Exponente == 1)
+                {
+                    return $"{Constante}{Variable}";
+                }
+
+                return $"{Constante}{Variable}^{Exponente}";
             }
 
-            //Muestra el Resultado
-            return ResultadoDerivada = Coeficiente.ToString() + Variable + SignoExp + ExponenteSt;
+            if (ExponenteStr.Contains("^") &&
+                ExponenteStr.Contains("/"))
+            {
+                _Numerador = Regex.Match(Monomio, "\\^[0-9]").Value;
+                _Denominador = Regex.Match(Monomio, "\\/[0-9]").Value;
+
+                Numerador = Int32.Parse(Regex.Replace(_Numerador, "\\^", ""));
+                Denominador = Int32.Parse(Regex.Replace(_Denominador, "\\/", ""));
+
+                int auxNum;
+                int auxDen;
+
+                auxNum = Numerador;
+                auxDen = Denominador;
+
+                if (Numerador != Denominador)
+                {
+                    Numerador += Denominador;
+                }
+
+                if (Numerador % Denominador == 0)
+                {
+                    Constante = Numerador / Denominador;
+                }
+                else
+                {
+                    Numerador *= Constante;
+                    Denominador *= Constante;
+
+                    if (auxNum != auxDen)
+                    {
+                        auxNum += auxDen;
+                    }
+
+                    return $"{Numerador}/{Denominador}{Variable}^{auxNum}/{auxDen}";
+                }
+
+                if (Numerador != Denominador)
+                {
+                    Numerador += Denominador;
+                }
+
+                return $"{Constante}{Variable}^{Numerador}/{Denominador}";
+            }
+
+            return "Hubo un error en la derivación";
         }
 
         //---------------------------------------------------------------------------//
         //Método que resuelve la formula 2: "y = ax es igual a y = a" 
         //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
-        public static string Formula2(string Monomio2)
+        public static string Formula2(string Monomio)
         {
             //-----------------------------------------------
             //Ejemplo de esta formula: f(x)=7x  ->  f(x)=7
             //-----------------------------------------------
 
-            //variables 
-            int Coeficiente;
-            int Exponente;
-            string Variable;
-
-            string ResultadoDeFuncion;
-
-            //Iniasilización
-
-            Coeficiente = 0;
-            Exponente = 0;
-            Variable = "";
-            ResultadoDeFuncion = "";
-
-            //Formula:
-
-            if (Coeficiente != 0 && Variable != null && Exponente == 1)
+            if (Regex.IsMatch(Monomio, "-?[0-9]{1,}[a-z]{1}"))
             {
-                ResultadoDeFuncion = Convert.ToString(Coeficiente);
+                return $"{Regex.Replace(Monomio,"[a-z]", "")}";
             }
-            return ResultadoDeFuncion;
+
+            return "";
+
         }
         //-------------------------------------------------------------------------------
         //Formula 3 que resuelve F = k  ---> F'=0
@@ -142,7 +164,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //Método que resuelve la formula 4: "y = x es igual a y = 1" 
         //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
-        public static string Formula4(string Monomio4)
+        public static string Formula4(string Monomio)
         {
             //-----------------------------------------------
             //Ejemplo de esta formula: f(x)=x  ->  f(x)=1
@@ -165,8 +187,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             //Formula:
 
             if (Coeficiente == 1 && Variable != null && Exponente == 1)
-            { 
-                    ResultadoDeFuncion = Convert.ToString(Coeficiente);
+            {
+                ResultadoDeFuncion = Convert.ToString(Coeficiente);
             }
             return ResultadoDeFuncion;
         }
@@ -174,7 +196,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //Método que resuelve la formula 5: "y = v^n es igual a y = n * v^n-1 * v^1" 
         //Juan Antonio Gil Lopez
         //---------------------------------------------------------------------------//
-        public static string Formula5(string Monomio5)
+        public static string Formula5(string Monomio)
         {
             //----------------------------------------------------------
             //Esta formula toma como base a la primera formula
