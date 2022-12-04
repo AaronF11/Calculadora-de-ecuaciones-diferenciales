@@ -55,7 +55,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         // +-------------------------------------------------------------------+
         // | Resuelve la ecuación del tipo requerido.                          |
         // +-------------------------------------------------------------------+
-        public abstract void ResolverEcuacion();
+        public abstract string ResolverEcuacion();
 
         // +-------------------------------------------------------------------+
         // | Recoger los signos de la ecuación y almacenarlos                  |

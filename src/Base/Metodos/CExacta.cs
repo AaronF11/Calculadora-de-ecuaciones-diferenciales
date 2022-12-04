@@ -124,9 +124,18 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             MessageBox.Show($"Contenidos: {dx} {dy}");
         }
 
-        public override void ResolverEcuacion()
+        public override string ResolverEcuacion()
         {
-            
+            // Pasos para resolver la ED
+
+            // Validar si la ecuación es exacta
+            // Llamar el método validar ecuacion en la GUI
+
+            // Acomodar M y N que son Mdx y Ndy
+            string IntegralMdx;
+
+
+            return $"";
         }
 
         public override DialogResult ValidarEcuacion()
