@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using POO22B_GPJA;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 {
