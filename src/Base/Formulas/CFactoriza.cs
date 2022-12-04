@@ -29,34 +29,46 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-------------------------
         // Clase que factoriza 
         //-------------------------
-        static void CFactor(string[] args) // Cambia el nombre de la función
+        public static void Factoriza(string[] args) // Cambia el nombre de la función
         {
-            Console.WriteLine("Ingrese el primer número");
-            int num1 = Convert.ToInt32(Console.ReadLine());
+            //variables 
+            int Coeficiente1;
+            int Coeficiente2;
+            int Exponente;
 
-            Console.WriteLine("Ingrese el segundo número");
-            int num2 = Convert.ToInt32(Console.ReadLine());
+            string Variable;
+            string CoeficienteComun;
+
+            //Inicialización
+
+            Coeficiente1 = 0;
+            Coeficiente2 = 0;
+            Exponente = 0;
+            Variable = "";
+            CoeficienteComun = "";
+
 
             // Seleccionamos el mayor y el menor para asignarlos
             // a las variables "a" y "b" respectivamente
-            int a = Math.Max(num1, num2);
-            int b = Math.Min(num1, num2);
 
-            // Declaramos la variable que guardará el resultado
+            int a = Math.Max(Coeficiente1, Coeficiente2);
+            int b = Math.Min(Coeficiente1, Coeficiente2);
+
+            // Variable que guardará el resultado:
             int MaximoComunDivisor;
 
-            // Creamos el ciclo encargado de hacer las iteraciones
+            // Ciclo encargado de hacer las iteraciones
             do
             {
                 MaximoComunDivisor = b; // Guardamos el divisor en el resultado
-                b = a % b; // Guardamos el resto en el divisor
+                b = a % b;              // Guardamos el resto en el divisor
                 a = MaximoComunDivisor; // El divisor pasa al dividendo
             } while (b != 0);
 
             // Mostramos como resultado el último resto no nulo
-            Console.WriteLine("El M.C.D. entre " + num1 + " y " + num2 + " es: " + MaximoComunDivisor);
+            CoeficienteComun = Convert.ToString(MaximoComunDivisor);
 
-            Console.ReadKey(true);
+
         }
     }
 }
