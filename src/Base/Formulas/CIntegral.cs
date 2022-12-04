@@ -21,15 +21,15 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //-------------------------
         // Atributos
         //-------------------------
-      //int y;
+        //int y;
         //protected MatchCollection VariablesComparacion;
-       // protected string Resultado;
-       // protected string Factor;
-       // protected string Integral;
-       // protected bool Validez;
+        // protected string Resultado;
+        // protected string Factor;
+        // protected string Integral;
+        // protected bool Validez;
         //protected string Variable;
-       // protected string VariableReducida;
-       // protected string Constante;
+        // protected string VariableReducida;
+        // protected string Constante;
         //-------------------------
         // Constructor
         //-------------------------
@@ -156,7 +156,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                 }
             }
         }
-    }
 
         //-------------------------------------------------------------------------
         //Método que resuleve la integral de la forma dx/x
@@ -166,23 +165,23 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         public static string IntegrarDXSX(string Integral)
         {
 
-        bool Validez;
-        string SegundoFactor;
-        string SubFactorA;
-        string SubFactorB;
-        string SubFactorC;
-        string SubFactorD;
-        string Factor;
-        string Constante;
-        string Variable;
-        MatchCollection VariablesComparacion;
-        string SubFuncion;
-        string Funcion;
-        string Resultado;
-        int A;
-        int B;
-        int C;
-        int D;
+            bool Validez;
+            string SegundoFactor;
+            string SubFactorA;
+            string SubFactorB;
+            string SubFactorC;
+            string SubFactorD;
+            string Factor;
+            string Constante;
+            string Variable;
+            MatchCollection VariablesComparacion;
+            string SubFuncion;
+            string Funcion;
+            string Resultado;
+            int A;
+            int B;
+            int C;
+            int D;
 
             if (Validez = Regex.IsMatch(Integral, "^(-|\\+?)([0-9]\\/[0-9])*[0-9]*[a-z]*\\/(-|\\+?)*([0-9]\\/[0-9])*[0-9]*[a-z]"))
             {
@@ -203,7 +202,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                 Constante = Convert.ToString(Regex.Match(Integral, "d[a-z]?"));
                 Variable = Convert.ToString(Regex.Match(Integral, "[a-z]\\/(-|\\+?)([0-9]\\/[0-9])*[0-9]*[a-z]"));
                 VariablesComparacion = Regex.Matches(Variable, "[a-z]");
-                
+
                 string x = VariablesComparacion[0].ToString();
                 string x2 = VariablesComparacion[1].ToString();
                 if (x == x2)
@@ -442,6 +441,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
         }
 
+
         //-------------------------------------------------------------------------
         //Método que resulve las integrales de la forma dx y kdx 
         //-------------------------------------------------------------------------
@@ -484,3 +484,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
     }
 }
+
+
+
+
+
