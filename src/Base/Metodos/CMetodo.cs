@@ -1,5 +1,4 @@
 ﻿using Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas;
-using POO22B_GPJA;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

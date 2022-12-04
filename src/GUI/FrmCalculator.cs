@@ -177,7 +177,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
                 BtnModo.ImageAlign = ContentAlignment.MiddleLeft;
                 BtnModo.Text = "Dark";
                 BtnModo.TextAlign = ContentAlignment.MiddleCenter;
-                BtnModo.BackColor = Color.Black;
                 BtnModo.ForeColor = Color.FromArgb(84, 84, 84);
                 this.BackColor = Color.FromArgb(224, 224, 224);
                 BtnMenu.Image = Properties.Resources.Menu;
@@ -249,7 +248,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
                 BtnModo.ImageAlign = ContentAlignment.MiddleLeft;
                 BtnModo.Text = "Light";
                 BtnModo.TextAlign = ContentAlignment.MiddleCenter;
-                BtnModo.BackColor = Color.White;
                 BtnModo.ForeColor = Color.FromArgb(84, 84, 84);
                 this.BackColor = Color.FromArgb(54, 71, 79);
                 BtnMenu.Image = Properties.Resources.Menu_2;

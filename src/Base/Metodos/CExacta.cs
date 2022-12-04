@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using POO22B_GPJA;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 {
@@ -41,7 +40,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             ExprMonomios = new Regex("[0-9]*[a-z]\\^*[0-9]*\\/*[0-9]*");
         }
 
-        public void ObtenerConstantes()
+        public void ObtenerMonomios()
         {
             // Inicializar lista de constantes
             dxMonomios = new List<string>();
@@ -69,8 +68,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 MessageBox.Show(Coincidencia.Value);
             }
 
-            Integral = new CIntegral();
-
+            //MessageBox.Show(CDerivada.Derivar(dxMonomios[0]));
+            
             //MessageBox.Show(Integral.Integrar(dxMonomios[0])); Comentado en lo que se resuelve xd
             
         }
@@ -123,13 +122,11 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 
             // Mostrar variables
             MessageBox.Show($"Contenidos: {dx} {dy}");
-
-            new CIntegral().IntegrarX(dx);
         }
 
         public override void ResolverEcuacion()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override DialogResult ValidarEcuacion()
@@ -163,7 +160,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 if (monomio.Contains("y"))
                 {
                     // Derivar monomio respecto a la variable y
-
+                    Mdy = CDerivada.Derivar(monomio);
                 }
             }
 
@@ -172,7 +169,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 if (monomio.Contains("x"))
                 {
                     // Derivar monomio respecto a la variable x
-
+                    Ndx = CDerivada.Derivar(monomio);
                 }
             }
 

@@ -662,7 +662,7 @@
             this.BtnDYDX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
             this.BtnDYDX.FlatAppearance.BorderSize = 0;
             this.BtnDYDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDYDX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDYDX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDYDX.ForeColor = System.Drawing.Color.White;
             this.BtnDYDX.Location = new System.Drawing.Point(213, 107);
             this.BtnDYDX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -678,7 +678,7 @@
             this.BtnDXDY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(202)))), ((int)(((byte)(249)))));
             this.BtnDXDY.FlatAppearance.BorderSize = 0;
             this.BtnDXDY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDXDY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDXDY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDXDY.ForeColor = System.Drawing.Color.White;
             this.BtnDXDY.Location = new System.Drawing.Point(283, 107);
             this.BtnDXDY.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -746,7 +746,7 @@
             // 
             // BtnModo
             // 
-            this.BtnModo.BackColor = System.Drawing.Color.Black;
+            this.BtnModo.BackColor = System.Drawing.Color.Transparent;
             this.BtnModo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BtnModo.FlatAppearance.BorderSize = 0;
             this.BtnModo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
