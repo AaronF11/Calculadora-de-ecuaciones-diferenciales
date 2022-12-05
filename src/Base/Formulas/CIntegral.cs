@@ -150,11 +150,45 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                         }
                         else
                         {
-                            return $"{coef}{Variable}^{expo})/{expo}";
+                            return $"({coef}{Variable}^{expo})/{expo}";
                         }
                     }
                 }
             }
+        }
+
+        public static string Integrar(string Monomio, string VariableAInsertar)
+        {
+            string Constante;
+            string Variable;
+            string Exponente;
+            string ExponenteFrac;
+
+            char[] caracteres;
+
+            Constante = Regex.Match(Monomio, "-?[0-9]{1,}").Value;
+            Variable = Regex.Match(Monomio, "[a-z]").Value;
+            Exponente = Regex.Match(Monomio, "\\^-?[0-9]\\/?[0-9]*").Value;
+
+            if (Exponente == "")
+            {
+                //return $"{Constante}{VariableAInsertar}{Variable}";
+                Monomio = $"{Constante}{VariableAInsertar}{Variable}";
+
+                caracteres = Monomio.ToCharArray();
+
+                Array.Sort(caracteres);
+
+                return new string(caracteres);
+            }
+
+            Monomio = $"{Constante}{VariableAInsertar}{Variable}^{Exponente}";
+
+            caracteres = Monomio.ToCharArray();
+
+            return new String(caracteres);
+
+            //return $"{Constante}{VariableAInsertar}{Variable}^{Exponente}";
         }
 
         //-------------------------------------------------------------------------
