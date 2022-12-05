@@ -3,6 +3,8 @@ using Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 {
@@ -21,6 +23,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
         protected CIntegral Integral;
         protected List<string> dxMonomios;
         protected List<string> dyMonomios;
+        protected List<string> dxIntegrados;
+        protected List<string> dyIntegrados;
 
         protected MatchCollection dxCoincidencia;
         protected MatchCollection dyCoincidencia;
@@ -32,7 +36,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
         public CExacta(string Ecuacion) : base(Ecuacion)
         {
             // Inicializar regex para monomios
-            ExprMonomios = new Regex("[0-9]*[a-z]\\^*[0-9]*\\/*[0-9]*");
+            ExprMonomios = new Regex("[0-9]*[a-z]*\\^?[0-9]*");
         }
 
         public void ObtenerMonomios()
@@ -50,23 +54,22 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             dyCoincidencia = ExprMonomios.Matches(dy);
 
             // Obtener constantes de dx
-            foreach(Match Coincidencia in dxCoincidencia)
+            foreach (Match Coincidencia in dxCoincidencia)
             {
                 dxMonomios.Add(Coincidencia.Value);
-                MessageBox.Show(Coincidencia.Value);
             }
 
             // Obtener constanes de dy
-            foreach(Match Coincidencia in dyCoincidencia)
+            foreach (Match Coincidencia in dyCoincidencia)
             {
-                dyMonomios.Add(Coincidencia.Value); 
-                MessageBox.Show(Coincidencia.Value);
+                dyMonomios.Add(Coincidencia.Value);
             }
 
-            //MessageBox.Show(CDerivada.Derivar(dxMonomios[0]));
-            
-            //MessageBox.Show(Integral.Integrar(dxMonomios[0])); Comentado en lo que se resuelve xd
-            
+            // Eliminar entradas vacias :D
+            dxMonomios = dxMonomios.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+            dyMonomios = dyMonomios.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+
+            Debug.Print($"Count: {dyMonomios.Count}");
         }
 
         public override void PartirEcuacion()
@@ -84,9 +87,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             {
                 // Añadir partes a la lista
                 PartesEcuacion.Add(Coincidencia.Value);
-                
-                // Información a debug
-                MessageBox.Show($"Parte: {Coincidencia}");
             }
 
             // Guardar dx / dy
@@ -114,9 +114,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 
             dx = Regex.Replace(dx, "dx", "");
             dy = Regex.Replace(dy, "dy", "");
-
-            // Mostrar variables
-            MessageBox.Show($"Contenidos: {dx} {dy}");
         }
 
         public override string ResolverEcuacion()
@@ -126,12 +123,69 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             // Validar si la ecuación es exacta
             // Llamar el método validar ecuacion en la GUI
 
-            // Acomodar M y N que son Mdx y Ndy
-            string IntegralMdx;
+            // Obtener signos 
+            GuardarSignos();
 
+            // Inicializar lista para guardar los monomios integrados
+            dxIntegrados = new List<string>();
+            dyIntegrados = new List<string>();
 
-            return $"";
-        }
+            // Integrar cada monomio presente en dx
+            foreach (string monomio in dxMonomios)
+            {
+                Debug.Print($"{monomio}");
+
+                if (!monomio.Contains("x"))
+                {
+                    dxIntegrados.Add(CIntegral.IntegracionInsertarVariable(monomio, "x"));
+                }
+                else
+                {
+                    dxIntegrados.Add(CIntegral.Integrar(monomio));
+                }
+            }
+
+            // Integrar cada monomio presente en dy
+            foreach (string monomio in dyMonomios)
+            {
+                Debug.Print($"{monomio}");
+
+                if (!monomio.Contains("y"))
+                {
+                    dyIntegrados.Add(CIntegral.IntegracionInsertarVariable(monomio, "y"));
+                }
+                else
+                {
+                    dyIntegrados.Add(CIntegral.Integrar(monomio));
+                }
+            }
+
+            // Para debug solamente
+            foreach (string MonomioIntegrado in dxIntegrados) { Debug.Print($"dx: {MonomioIntegrado}"); }
+            foreach (string MonomioIntegrado in dyIntegrados) { Debug.Print($"dy: {MonomioIntegrado}"); }
+
+            string IMdx;
+            string INdy;
+
+            string IDIMdx;
+
+            IMdx = $"{dxIntegrados[0]}{Signos[0]}{dxIntegrados[1]}";
+            IDIMdx = CIntegral.IntegracionInsertarVariable(CDerivada.DerivacionVariableA(dxIntegrados[0], "y"), "y");
+            INdy = "";
+
+            if (IDIMdx == dxIntegrados[0])
+            {
+                INdy = $"{Signos[2]}{dyIntegrados[1]}";
+            }
+            else
+            {
+                INdy = $"{Signos[1]}{dyIntegrados[0]}{Signos[2]}{dyIntegrados[1]}";
+            }
+
+            Debug.Print($"IMdx: {IMdx}, INdy: {INdy}, IDIMdx: {IDIMdx}");
+
+                return $"{IMdx}{INdy}+C";
+            }
 
         public override DialogResult ValidarEcuacion()
         {
@@ -159,7 +213,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             Mdy = "";
             Ndx = "";
 
-            foreach(string monomio in dxMonomios)
+            foreach (string monomio in dxMonomios)
             {
                 if (monomio.Contains("y"))
                 {
@@ -168,7 +222,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 }
             }
 
-            foreach(string monomio in dyMonomios)
+            foreach (string monomio in dyMonomios)
             {
                 if (monomio.Contains("x"))
                 {
