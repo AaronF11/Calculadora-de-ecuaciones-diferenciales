@@ -694,13 +694,13 @@
             this.TxtResultado.BackColor = System.Drawing.Color.White;
             this.TxtResultado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtResultado.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TxtResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtResultado.ForeColor = System.Drawing.Color.Black;
-            this.TxtResultado.Location = new System.Drawing.Point(20, 81);
+            this.TxtResultado.Location = new System.Drawing.Point(10, 81);
             this.TxtResultado.Multiline = true;
             this.TxtResultado.Name = "TxtResultado";
             this.TxtResultado.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtResultado.Size = new System.Drawing.Size(287, 44);
+            this.TxtResultado.Size = new System.Drawing.Size(332, 44);
             this.TxtResultado.TabIndex = 1;
             this.TxtResultado.Text = "x^2+5x+3=1";
             // 
@@ -711,7 +711,7 @@
             this.PnlPantalla.Controls.Add(this.TxtResultado);
             this.PnlPantalla.Location = new System.Drawing.Point(38, 54);
             this.PnlPantalla.Name = "PnlPantalla";
-            this.PnlPantalla.Padding = new System.Windows.Forms.Padding(20, 0, 45, 10);
+            this.PnlPantalla.Padding = new System.Windows.Forms.Padding(10, 40, 10, 10);
             this.PnlPantalla.Size = new System.Drawing.Size(352, 135);
             this.PnlPantalla.TabIndex = 43;
             // 
@@ -719,16 +719,17 @@
             // 
             this.TxtEcuacionInicial.BackColor = System.Drawing.Color.White;
             this.TxtEcuacionInicial.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtEcuacionInicial.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TxtEcuacionInicial.Dock = System.Windows.Forms.DockStyle.Top;
             this.TxtEcuacionInicial.Enabled = false;
             this.TxtEcuacionInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtEcuacionInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(127)))));
-            this.TxtEcuacionInicial.Location = new System.Drawing.Point(20, 59);
+            this.TxtEcuacionInicial.Location = new System.Drawing.Point(10, 40);
             this.TxtEcuacionInicial.Multiline = true;
             this.TxtEcuacionInicial.Name = "TxtEcuacionInicial";
             this.TxtEcuacionInicial.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtEcuacionInicial.Size = new System.Drawing.Size(287, 22);
+            this.TxtEcuacionInicial.Size = new System.Drawing.Size(332, 22);
             this.TxtEcuacionInicial.TabIndex = 2;
+            this.TxtEcuacionInicial.Text = "x^2+5x+3=1";
             // 
             // PnlMenu
             // 
