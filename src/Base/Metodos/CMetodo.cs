@@ -26,12 +26,16 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
         
         protected List<string> Monomios;
         protected string Ecuacion;
-    
+
         protected MatchCollection ColeccionSignos;
         protected MatchCollection ColeccionPartesEcuacion;
 
+        protected Regex ExprMonomios;
         protected Regex ExprSignos;
         protected Regex ExprPartes;
+
+        protected string dx;
+        protected string dy;
 
         //-------------------------
         // Constructor
@@ -75,9 +79,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos
             {
                 // Añadir signos a la lista
                 Signos.Add(Coincidencia.Value);
-
-                // Información de Debug
-               MessageBox.Show(Coincidencia.Value);
             }
         }
     }
