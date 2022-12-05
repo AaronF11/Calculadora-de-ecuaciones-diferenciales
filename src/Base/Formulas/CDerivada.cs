@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
-    //---------------------------------------------------------------------
-    //Clase que Deriva.
-    // CMJL. Jorge Luis Cruz Macias. 28/11/2022
-    // JAGL. Juan Antonio Gil Lopez. 28/11/2022
-    //---------------------------------------------------------------------
+    //-----------------------------------------------//
+    // Clase que contiene métodos de derivación.
+    //
+    // Jorge Luis Cruz Macias.
+    // Juan Antonio Gil Lopez.
+    //-----------------------------------------------//
 
     public class CDerivada
     {
@@ -24,11 +20,11 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
         }
 
-        //-------------------------------------------------------//
-        //Método que resuelve derivada: Potencia f(x)= n * x^n-1
-        //Jorge Luis Cruz
-        //-------------------------------------------------------//
-        public static string Derivar(string Monomio)
+        #region Derivación Potencia
+        //-----------------------------------------------------------
+        // Método que resuelve derivada: Potencia f(x)= n * x^n-1
+        //-----------------------------------------------------------
+        public static string DerivacionPotencia(string Monomio)
         {
             // Variables
             int Constante;
@@ -37,7 +33,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             string ExponenteStr;
             string Variable;
 
-            // variables para derivar exp fracc
+            // variables para derivar exponente fraccionario
             int Numerador;
             int Denominador;
             string _Numerador;
@@ -112,16 +108,14 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             return "Hubo un error en la derivación";
         }
 
-        //---------------------------------------------------------------------------//
-        //Método que resuelve la formula 2: "y = ax es igual a y = a" 
-        //Juan Antonio Gil Lopez
-        //---------------------------------------------------------------------------//
-        public static string Formula2(string Monomio)
-        {
-            //-----------------------------------------------
-            //Ejemplo de esta formula: f(x)=7x  ->  f(x)=7
-            //-----------------------------------------------
+        #endregion
 
+        #region Derivación variable "a"
+        //--------------------------------------------------------------------
+        // Método que resuelve la derivada: "y = ax es igual a y'= a" 
+        //--------------------------------------------------------------------
+        public static string DerivacionVariableA(string Monomio)
+        {
             if (Regex.IsMatch(Monomio, "-?[0-9]{1,}[a-z]{1}"))
 
             {
@@ -129,15 +123,17 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
 
             return "";
-
         }
-        //-------------------------------------------------------------------------------
-        //Formula 3 que resuelve F = k  ---> F'=0
-        //Jorge Luis Cruz
-        //-------------------------------------------------------------------------------
-        public static string Formula3(string mono3)
+
+        #endregion
+
+        #region Derivación de constante
+        //-----------------------------------------------------
+        // Método que resuelve la derivada: F = k  ---> F'=0
+        //-----------------------------------------------------
+        public static string DerivacionConstante(string mono3)
         {
-            //Variables Datos nesesarios para realizar derivada
+            //Variables de datos nesesarios para realizar la derivada
             int Coeficiente;
             int Exponente;
             String Variable;
@@ -145,7 +141,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             String Respuesta;
 
             //Inicialización 
-
             Coeficiente = 0;
             Exponente = 0;
             Variable = "";
@@ -161,16 +156,15 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
             return Respuesta;
         }
-        //---------------------------------------------------------------------------//
-        //Método que resuelve la formula 4: "y = x es igual a y = 1" 
-        //Juan Antonio Gil Lopez
-        //---------------------------------------------------------------------------//
-        public static string Formula4(string Monomio)
-        {
-            //-----------------------------------------------
-            //Ejemplo de esta formula: f(x)=x  ->  f(x)=1
-            //-----------------------------------------------
 
+        #endregion
+
+        #region Derivación de variable
+        //------------------------------------------------------------------------
+        // Método que resuelve la derivada: "y = x es igual a y = 1" 
+        //------------------------------------------------------------------------
+        public static string DerivacionVariable(string Monomio)
+        {
             //variables 
             int Coeficiente;
             int Exponente;
@@ -193,16 +187,15 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
             return ResultadoDeFuncion;
         }
-        //---------------------------------------------------------------------------//
-        //Método que resuelve la formula 5: "y = v^n es igual a y = n * v^n-1 * v^1" 
-        //Juan Antonio Gil Lopez
-        //---------------------------------------------------------------------------//
-        public static string Formula5(string Monomio)
-        {
-            //----------------------------------------------------------
-            //Esta formula toma como base a la primera formula
-            //----------------------------------------------------------
 
+        #endregion
+
+        #region Derivación de una función elevada a un exponente
+        //-----------------------------------------------------------------------------
+        //Método que resuelve la derivada: "y = v^n es igual a y = n * v^n-1 * v^1" 
+        //-----------------------------------------------------------------------------
+        public static string DerivacionFuncionElevadaAExp(string Monomio)
+        {
             //Variables 
             int Coeficiente;
             int ExponenteMonomio;
@@ -241,6 +234,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             //Muestra el Resultado
             return ResultadoDerivada = "(" + ResultadoDeFuncion + Variable + SignoExp + ExponenteDeVariable + ")" + SignoExp + REExponente;
         }
+
+        #endregion
     }
 }
 

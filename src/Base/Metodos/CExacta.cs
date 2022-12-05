@@ -1,32 +1,27 @@
 ﻿using Calculadora_de_ecuaciones_diferenciales.src.Base.Metodos;
 using Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 {
     //----------------------------------------------------------//
-    // Clase que répresenta el método para ecuaciones exactas
+    // Clase que contiene el método para ecuaciones exactas.
+    //
+    // Integrantes:
+    // Jorge Antonio Macías Zambrano.
     //----------------------------------------------------------//
     public class CExacta : CMetodo
     {
         //-------------------------
         // Atributos
         //-------------------------
-        protected string dx;
-        protected string dy;
         protected CDerivada Derivada;
         protected CIntegral Integral;
         protected List<string> dxMonomios;
         protected List<string> dyMonomios;
 
-        protected Regex ExprMonomios;
         protected MatchCollection dxCoincidencia;
         protected MatchCollection dyCoincidencia;
 
@@ -115,7 +110,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 dy = PartesEcuacion[1];
             }
 
-            // eliminar dx y dy de los strings
+            // Eliminar dx y dy de los strings
 
             dx = Regex.Replace(dx, "dx", "");
             dy = Regex.Replace(dy, "dy", "");
@@ -169,7 +164,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 if (monomio.Contains("y"))
                 {
                     // Derivar monomio respecto a la variable y
-                    Mdy = CDerivada.Derivar(monomio);
+                    Mdy = CDerivada.DerivacionPotencia(monomio);
                 }
             }
 
@@ -178,7 +173,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 if (monomio.Contains("x"))
                 {
                     // Derivar monomio respecto a la variable x
-                    Ndx = CDerivada.Derivar(monomio);
+                    Ndx = CDerivada.DerivacionPotencia(monomio);
                 }
             }
 

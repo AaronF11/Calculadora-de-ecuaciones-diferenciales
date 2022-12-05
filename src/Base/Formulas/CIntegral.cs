@@ -1,61 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using System.Drawing;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
-    //-------------------------
-    // Clase que integra.
-    //-------------------------
+    //-------------------------------------------//
+    // Clase que contiene métodos de integración.
+    //
+    // Integrantes de Integrales:
+    // Jorge Antonio Macías Zambrano
+    // Jorge Alfredo Hernández Mota
+    // Javier Alejandro Hernández Sánchez
+    //------------------------------------------//
     public class CIntegral
     {
-        //Integrantes de Integrales:
-        //Jorge Alfredo Hernández Mota
-        //Javier Alejandro Hernández Sánchez
-
         //-------------------------
         // Atributos
         //-------------------------
-        //int y;
-        //protected MatchCollection VariablesComparacion;
-        // protected string Resultado;
-        // protected string Factor;
-        // protected string Integral;
-        // protected bool Validez;
-        //protected string Variable;
-        // protected string VariableReducida;
-        // protected string Constante;
+
         //-------------------------
         // Constructor
         //-------------------------
         public CIntegral()
         {
         }
-        //-------------------------------------------------------------------------
-        //Metodo para integrar
-        //-------------------------------------------------------------------------
+
+        #region Integración
+        //--------------------------------
+        //Método para integrar
+        //--------------------------------
         public static string Integrar(string Monomio)
         {
-            //Declaracion de variables
+            // Declaración de variables
             string Coeficiente, Exponente, Variable;
             string NumeradorCO, DenominadorCO;
             int coef = 0, expo, nume, deno, numco = 0, denoco = 0;
 
-            //Selecciona la letra vartiable
+            // Selecciona la letra vartiable
             Variable = Regex.Match(Monomio, "[a-z]").Value;
 
             //Convierte el coeficiente a int
             Coeficiente = Regex.Match(Monomio, "\\-?[0-9]*\\/?-?[0-9]*").Value;
+
             if (Coeficiente == "")
             {
                 coef = 1;
             }
-            else //Coeficiente en fracciones
+
+            else // Coeficiente en fracciones
             {
                 if (Coeficiente.Contains("/"))
                 {
@@ -66,6 +58,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                     numco = Int32.Parse(NumeradorCO);
                     denoco = Int32.Parse(DenominadorCO);
                 }
+
                 else
                 {
                     coef = Int32.Parse(Coeficiente);
@@ -101,7 +94,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                 }
                 else
                 {
-                    expo = 2; //Cuando no hay potencia se da por hechoo que es 1
+                    expo = 2; //Cuando no hay potencia se da por hecho que es 1
                 }
 
                 //Determina si el exponente es fraccion
@@ -157,7 +150,13 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
         }
 
-        public static string Integrar(string Monomio, string VariableAInsertar)
+        #endregion
+
+        #region Integración (Insertar variable)
+        //---------------------------------------------
+        //Método para integrar (Insertar variable)
+        //---------------------------------------------
+        public static string IntegracionInsertarVariable(string Monomio, string VariableAInsertar)
         {
             string Constante;
             string Variable;
@@ -187,39 +186,46 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             caracteres = Monomio.ToCharArray();
 
             return new String(caracteres);
-
-            //return $"{Constante}{VariableAInsertar}{Variable}^{Exponente}";
         }
 
+        #endregion
+
+        #region Integrar dx/x
         //-------------------------------------------------------------------------
         //Método que resuleve la integral de la forma dx/x
         //-------------------------------------------------------------------------
-
-        //Método por Javier Hernandez
-        public static string IntegrarDXSX(string Integral)
+        public static string IntegrarDXx(string Integral)
         {
-
+            // Variables de resolución
             bool Validez;
-            string SegundoFactor;
-            string SubFactorA;
-            string SubFactorB;
-            string SubFactorC;
-            string SubFactorD;
-            string Factor;
-            string Constante;
-            string Variable;
-            MatchCollection VariablesComparacion;
-            string SubFuncion;
-            string Funcion;
             string Resultado;
+
+            string Funcion;
+            string SubFuncion;
+
+            // Factores
             int A;
             int B;
             int C;
             int D;
 
+            // Subfactores
+            string SubFactorA;
+            string SubFactorB;
+            string SubFactorC;
+            string SubFactorD;
+
+            string Factor;
+            string SegundoFactor;
+            string Constante;
+            string Variable;
+            MatchCollection VariablesComparacion;
+
+            // Determina la validez 
             if (Validez = Regex.IsMatch(Integral, "^(-|\\+?)([0-9]\\/[0-9])*[0-9]*[a-z]*\\/(-|\\+?)*([0-9]\\/[0-9])*[0-9]*[a-z]"))
             {
                 Factor = Convert.ToString(Regex.Match(Integral, "^(-|\\+?)([0-9]/[0-9])*[0-9]*[^d]*"));
+
                 if (Factor == "")
                 {
                     Factor = "1";
@@ -239,6 +245,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
                 string x = VariablesComparacion[0].ToString();
                 string x2 = VariablesComparacion[1].ToString();
+
                 if (x == x2)
                 {
                     SubFuncion = Convert.ToString(Regex.Match(Integral, "(\\/([0-9]\\/[0-9])*[0-9]*[a-z](-|\\+)[0-9])"));
@@ -277,6 +284,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                             {
                                 SubFactorA = SegundoFactor.Substring(0, 1);
                                 SubFactorB = SegundoFactor.Substring(2, 1);
+
                                 if (Factor == "-1")
                                 {
                                     if (Funcion == "")
@@ -306,12 +314,13 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                         return Resultado;
                                     }
 
-                                }//Si es número
+                                } // Si es número
                             }
                             else
                             {
                                 //Paso el numero a fracción como denominador
                                 SegundoFactor = "1/" + SegundoFactor;
+
                                 if (Factor == "-1")
                                 {
                                     if (Funcion == "")
@@ -337,11 +346,10 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                         Resultado = SegundoFactor + "ln " + "|" + SubFuncion + "|" + " + C";
                                         return Resultado;
                                     }
-
                                 }
                             }
                         }
-                    }//Si arriba si hay numeros o fracciones
+                    }      //Si arriba si hay numeros o fracciones
                     else
                     {
                         //Si es fraccion
@@ -360,9 +368,9 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                     Resultado = Factor + "ln " + "|" + SubFuncion + "|" + " + C";
                                     return Resultado;
                                 }
-                            }//SI abajo si hay algo
+                            }     //SI abajo si hay algo
                             else
-                            {//Si lo de abajo es una fracción
+                            {   //Si lo de abajo es una fracción
                                 if (Validez = Regex.IsMatch(SegundoFactor, "([0-9]\\/[0-9])"))
                                 {
                                     SubFactorA = Factor.Substring(0, 1);
@@ -373,6 +381,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                     B = Convert.ToInt32(SubFactorB);
                                     C = Convert.ToInt32(SubFactorC);
                                     D = Convert.ToInt32(SubFactorD);
+
                                     if (Funcion == "")
                                     {
                                         Resultado = Resultado = A * D + "/" + B * C + "ln " + "|" + x + "|" + " + C";
@@ -383,7 +392,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                         Resultado = Resultado = A * D + "/" + B * C + "ln " + "|" + SubFuncion + "|" + " + C";
                                         return Resultado;
                                     }
-                                }//Si lo de abajo es un número
+                                }      //Si lo de abajo es un número
                                 else
                                 {
                                     SubFactorA = Factor.Substring(0, 1);
@@ -391,6 +400,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                     A = Convert.ToInt32(SubFactorA);
                                     B = Convert.ToInt32(SubFactorB);
                                     C = Convert.ToInt32(SegundoFactor);
+
                                     if (Funcion == "")
                                     {
                                         Resultado = Resultado = A + "/" + B * C + "ln " + "|" + x + "|" + " + C";
@@ -405,8 +415,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                             }
                         }
                         else
-                        //Si es numero
-                        {
+                        { //Si es numero
+
                             //Si abajo no hay nada
                             if (SegundoFactor == "")
                             {
@@ -420,9 +430,9 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                     Resultado = Factor + "ln " + "|" + SubFuncion + "|" + " + C";
                                     return Resultado;
                                 }
-                            }//SI abajo si hay algo
+                            }      //SI abajo si hay algo
                             else
-                            {//Si lo de abajo es una fracción
+                            {      //Si lo de abajo es una fracción
                                 if (Validez = Regex.IsMatch(SegundoFactor, "([0-9]\\/[0-9])"))
                                 {
                                     SubFactorC = SegundoFactor.Substring(0, 1);
@@ -430,6 +440,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                     A = Convert.ToInt32(Factor);
                                     C = Convert.ToInt32(SubFactorC);
                                     D = Convert.ToInt32(SubFactorD);
+
                                     if (Funcion == "")
                                     {
                                         Resultado = Resultado = A * D + "/" + C + "ln " + "|" + x + "|" + " + C";
@@ -440,11 +451,12 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                                         Resultado = Resultado = A * D + "/" + C + "ln " + "|" + SubFuncion + "|" + " + C";
                                         return Resultado;
                                     }
-                                }//Si lo de abajo es un número
+                                }     //Si lo de abajo es un número
                                 else
                                 {
                                     A = Convert.ToInt32(Factor);
                                     D = Convert.ToInt32(SegundoFactor);
+
                                     if (Funcion == "")
                                     {
                                         Resultado = Resultado = A + "/" + D + "ln " + "|" + x + "|" + " + C";
@@ -459,7 +471,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                             }
                         }
                     }
-                    //MessageBox.Show(Resultado);
+
                     return Integral;
                 }
                 else
@@ -475,14 +487,15 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
         }
 
+        #endregion
 
+        #region Integrar dx
         //-------------------------------------------------------------------------
         //Método que resulve las integrales de la forma dx y kdx 
         //-------------------------------------------------------------------------
-
-        //Método por Javier Hernández
         public static string IntegrarDX(string Expresion)
         {
+            // Variables
             string Constante = Expresion;
             string Variable;
             string Resultado;
@@ -516,10 +529,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             }
         }
 
+        #endregion
     }
 }
-
-
-
-
-
