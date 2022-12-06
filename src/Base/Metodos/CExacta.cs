@@ -68,8 +68,6 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             // Eliminar entradas vacias :D
             dxMonomios = dxMonomios.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
             dyMonomios = dyMonomios.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
-
-            Debug.Print($"Count: {dyMonomios.Count}");
         }
 
         public override void PartirEcuacion()
@@ -218,7 +216,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 if (monomio.Contains("y"))
                 {
                     // Derivar monomio respecto a la variable y
-                    Mdy = CDerivada.DerivacionPotencia(monomio);
+                    Mdy += $" {CDerivada.DerivacionPotencia(monomio, "y")}";
                 }
             }
 
@@ -227,9 +225,11 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 if (monomio.Contains("x"))
                 {
                     // Derivar monomio respecto a la variable x
-                    Ndx = CDerivada.DerivacionPotencia(monomio);
+                    Ndx += $" {CDerivada.DerivacionPotencia(monomio, "x")}";
                 }
             }
+
+            Debug.Print($"Mdy: {Mdy}, Ndx: {Ndx}");
 
             if (Mdy == Ndx)
             {
