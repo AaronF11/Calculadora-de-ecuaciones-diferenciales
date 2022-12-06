@@ -74,6 +74,10 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                 {
                     return $"{numco}/{denoco}{Variable}";
                 }
+                else if (coef == 1)
+                {
+                    return $"{Variable}";
+                }
                 else //Independiente entero
                 {
                     return $"{coef}{Variable}";
@@ -140,6 +144,10 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                         if (coef == 0)
                         {
                             return $"{numco}/{denoco}{Variable}^{expo})/{expo}";
+                        }
+                        else if (coef == 1) 
+                        {
+                            return $"({Variable}^{expo})/{expo}";
                         }
                         else
                         {
