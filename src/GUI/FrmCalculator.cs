@@ -1,8 +1,10 @@
 ﻿using Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas;
+using Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -142,15 +144,13 @@ namespace Calculadora_de_ecuaciones_diferenciales
         #region Botones de la barra superior.
         private void BtnMenu_Click(object sender, EventArgs e)
         {
-            if (PnlMenu.Height == 140)
+            if (PnlMenu.Height != 0)
             {
                 PnlMenu.Height = 0;
-                BtnMenu.BackColor = this.BackColor;
             }
             else if (PnlMenu.Height == 0)
             {
-                PnlMenu.Height = 140;
-                BtnMenu.BackColor = this.BackColor;
+                PnlMenu.Height = 80;
             }
         }
 
@@ -325,7 +325,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
                 Modos(Modo);
                 Modo = 1;
             }
-            else if(Modo == 1)
+            else if (Modo == 1)
             {
                 Modos(Modo);
                 Modo = 0;
@@ -340,8 +340,27 @@ namespace Calculadora_de_ecuaciones_diferenciales
         //---------------------------------------------------------------------
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
+            // Validar si la entrada es vacia
+            if (TxtResultado.Text == String.Empty) return;
+            
+            // Enviar ecuación diferencial exacta a 
+            // TextBox secundario
             TxtEcuacionInicial.Text = TxtResultado.Text;
-            TxtResultado.Text = "";
+
+            CExacta Exacta = new CExacta(TxtEcuacionInicial.Text);
+
+            Exacta.PartirEcuacion();
+            Exacta.ObtenerMonomios();
+
+            DialogResult DResult = Exacta.ValidarEcuacion();
+
+            if (DResult == DialogResult.No)
+            {
+                MessageBox.Show("La ecuación introducida no es exacta");
+                return;
+            }
+            
+            TxtResultado.Text = Exacta.ResolverEcuacion();
         }
 
         //---------------------------------------------------------------------
