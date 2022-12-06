@@ -1,5 +1,7 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
@@ -41,6 +43,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             EsConstanteFraccionario = false;
             Numerador = 0;
             Denominador = 0;
+            Exponente = 0;
 
             // Comprueba si es constante fraccionario
             if (Regex.IsMatch(Monomio, "[0-9]*\\/[0-9]"))
@@ -66,6 +69,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             // Si no encuentra el exponente es 1
             else
             {
+                // Suena estupido pero funciona :D
                 Constante = 1;
             }
 
@@ -74,6 +78,28 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
             // Obtener exponente entero / fraccionario
             ExponenteStr = Regex.Match(Monomio, "\\^-?[0-9]*\\/?[0-9]*").Value;
+
+            if (!ExponenteStr.Contains("^") &&
+                Exponente == 0 &&
+                Constante == 1) 
+            {
+                return "";
+            }
+
+            if (!ExponenteStr.Contains("^") && 
+                Exponente == 0 &&  
+                Constante != 0)
+            {
+                return $"{Constante}";
+            }
+
+
+            //if (!ExponenteStr.Contains("^") &&
+            //    Exponente == 0 &&
+            //    Constante != 0)
+            //{
+            //    return $"{Constante}";
+            //}
 
             // Exponente entero
             if (ExponenteStr.Contains("^") &&
@@ -130,10 +156,42 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                     Num -= Den;
                 }
 
-                return $"{Constante}{Variable}^{Num}/{Den}";                
+                return $"{Constante}{Variable}^{Num}/{Den}";
             }
 
             return "Hubo un error en la derivación";
+        }
+
+        #endregion
+
+        #region Derivación Potenciá en función de (variable)
+
+        public static string DerivacionPotencia(string Monomio, string VariableADerivar)
+        {
+            // Variables
+            List<string> Variables;
+            MatchCollection Coincidencias;
+            Variables = new List<string>();
+            string NuevoMonomio;
+
+
+            // Asignación de valores
+            Coincidencias = Regex.Matches(Monomio, "[0-9]*[a-z]\\^?[0-9]*\\/?[0-9]*");
+            NuevoMonomio = "";
+
+            foreach (Match Coincidencia in Coincidencias)
+            {
+                if (Coincidencia.Value.Contains(VariableADerivar))
+                {
+                    NuevoMonomio += $"{DerivacionPotencia(Coincidencia.Value)}";
+                }
+                else
+                {
+                    NuevoMonomio += $"{Coincidencia.Value}";
+                }
+            }
+
+            return NuevoMonomio;
         }
 
         #endregion
