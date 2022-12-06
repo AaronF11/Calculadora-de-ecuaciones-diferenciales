@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
@@ -29,80 +30,107 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             // Variables
             int Constante;
             int Exponente;
+            int Numerador;
+            int Denominador;
 
             string ExponenteStr;
             string Variable;
+            bool EsConstanteFraccionario;
 
-            // variables para derivar exponente fraccionario
-            int Numerador;
-            int Denominador;
-            string _Numerador;
-            string _Denominador;
+            // Valores iniciales
+            EsConstanteFraccionario = false;
+            Numerador = 0;
+            Denominador = 0;
 
-            Constante = Int32.Parse(Regex.Match(Monomio, "-?[0-9]{1,}").Value);
+            // Comprueba si es constante fraccionario
+            if (Regex.IsMatch(Monomio, "[0-9]*\\/[0-9]"))
+            {
+                string _Numerador;
+                string _Denominador;
+
+                _Numerador = Regex.Match(Monomio, "[0-9]{1,}").Value;
+                _Denominador = Regex.Replace(Regex.Match(Monomio, "\\/[0-9]{1,}").Value, "\\/", "");
+
+                Numerador = Int32.Parse(_Numerador);
+                Denominador = Int32.Parse(_Denominador);
+
+                EsConstanteFraccionario = true;
+            }
+
+            // Comrueba si la constante es un número entero
+            if (Regex.IsMatch(Monomio, "-?[0-9]{1,}"))
+            {
+                Constante = Int32.Parse(Regex.Match(Monomio, "-?[0-9]{1,}").Value);
+            }
+
+            // Si no encuentra el exponente es 1
+            else
+            {
+                Constante = 1;
+            }
+
+            // Obtener variable
             Variable = Regex.Match(Monomio, "[a-z]").Value;
-            ExponenteStr = Regex.Match(Monomio, "\\^-?[0-9]{1,}\\/?[0-9]*").Value;
 
+            // Obtener exponente entero / fraccionario
+            ExponenteStr = Regex.Match(Monomio, "\\^-?[0-9]*\\/?[0-9]*").Value;
+
+            // Exponente entero
             if (ExponenteStr.Contains("^") &&
                 !ExponenteStr.Contains("/"))
             {
                 Exponente = Int32.Parse(Regex.Replace(ExponenteStr, "\\^", ""));
 
+                if (EsConstanteFraccionario)
+                {
+                    Numerador *= Exponente;
+                }
+
                 Constante *= Exponente;
 
                 Exponente -= 1;
 
-                if (Exponente == 1)
+                if (Exponente == 1 &&
+                    !EsConstanteFraccionario)
                 {
                     return $"{Constante}{Variable}";
+                }
+
+                if (Exponente == 1 &&
+                    EsConstanteFraccionario)
+                {
+                    return $"({Numerador}/{Denominador}){Variable}";
                 }
 
                 return $"{Constante}{Variable}^{Exponente}";
             }
 
+            // Exponente fraccionario
             if (ExponenteStr.Contains("^") &&
                 ExponenteStr.Contains("/"))
             {
+                string _Numerador;
+                string _Denominador;
+                int Num;
+                int Den;
+                int AuxNum;
+                int AuxDen;
+
                 _Numerador = Regex.Match(Monomio, "\\^[0-9]").Value;
                 _Denominador = Regex.Match(Monomio, "\\/[0-9]").Value;
 
-                Numerador = Int32.Parse(Regex.Replace(_Numerador, "\\^", ""));
-                Denominador = Int32.Parse(Regex.Replace(_Denominador, "\\/", ""));
+                Num = Int32.Parse(Regex.Replace(_Numerador, "\\^", ""));
+                Den = Int32.Parse(Regex.Replace(_Denominador, "\\/", ""));
 
-                int auxNum;
-                int auxDen;
+                AuxNum = Num;
+                AuxDen = Den;
 
-                auxNum = Numerador;
-                auxDen = Denominador;
-
-                if (Numerador != Denominador)
+                if (Num != Den)
                 {
-                    Numerador += Denominador;
+                    Num -= Den;
                 }
 
-                if (Numerador % Denominador == 0)
-                {
-                    Constante = Numerador / Denominador;
-                }
-                else
-                {
-                    Numerador *= Constante;
-                    Denominador *= Constante;
-
-                    if (auxNum != auxDen)
-                    {
-                        auxNum += auxDen;
-                    }
-
-                    return $"{Numerador}/{Denominador}{Variable}^{auxNum}/{auxDen}";
-                }
-
-                if (Numerador != Denominador)
-                {
-                    Numerador += Denominador;
-                }
-
-                return $"{Constante}{Variable}^{Numerador}/{Denominador}";
+                return $"{Constante}{Variable}^{Num}/{Den}";                
             }
 
             return "Hubo un error en la derivación";
@@ -114,12 +142,12 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
         //--------------------------------------------------------------------
         // Método que resuelve la derivada: "y = ax es igual a y'= a" 
         //--------------------------------------------------------------------
-        public static string DerivacionVariableA(string Monomio)
+        public static string DerivacionVariableA(string Monomio, string VariableADerivar)
         {
-            if (Regex.IsMatch(Monomio, "-?[0-9]{1,}[a-z]{1}"))
+            if (Regex.IsMatch(Monomio, "-?[0-9]*[a-z]{1}"))
 
             {
-                return $"{Regex.Replace(Monomio,"[a-z]", "")}";
+                return $"{Regex.Replace(Monomio, VariableADerivar, "")}";
             }
 
             return "";
