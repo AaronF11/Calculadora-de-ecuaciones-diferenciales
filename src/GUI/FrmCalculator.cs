@@ -341,12 +341,6 @@ namespace Calculadora_de_ecuaciones_diferenciales
         //---------------------------------------------------------------------
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
-
-            Debug.Print($"{CDerivada.DerivacionPotencia("8xy", "x")}");
-            Debug.Print($"{CDerivada.DerivacionPotencia("8xy", "y")}");
-
-            Debug.Print($"{CIntegral.Integrar("8xy", "y")}");
-
             // Validar si la entrada es vacia
             if (TxtResultado.Text == String.Empty) return;
 
