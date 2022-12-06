@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 {
@@ -145,7 +146,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
                         {
                             return $"{numco}/{denoco}{Variable}^{expo})/{expo}";
                         }
-                        else if (coef == 1) 
+                        else if (coef == 1)
                         {
                             return $"({Variable}^{expo})/{expo}";
                         }
@@ -160,6 +161,39 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
 
         #endregion
 
+        #region Integración en función de (variable)
+
+        public static string Integrar(string Monomio, string VariableAIntegrar)
+        {
+            // Variables
+            List<string> Variables;
+            MatchCollection Coincidencias;
+            string NuevoMonomio;
+
+            // Inicialización de variables
+            Variables = new List<string>();
+            NuevoMonomio = "";
+
+            // Asignar valores
+            Coincidencias = Regex.Matches(Monomio, "[0-9]*[a-z]\\^?[0-9]*\\/?[0-9]*");
+
+            foreach (Match Coincidencia in Coincidencias)
+            {
+                if (Coincidencia.Value.Contains(VariableAIntegrar))
+                {
+                    NuevoMonomio += $"{Integrar(Coincidencia.Value)}";
+                }
+                else
+                {
+                    NuevoMonomio += $"{Coincidencia.Value}";
+                }
+            }
+
+            return NuevoMonomio;
+        }
+
+        #endregion
+
         #region Integración (Insertar variable)
         //---------------------------------------------
         //Método para integrar (Insertar variable)
@@ -169,13 +203,12 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             string Constante;
             string Variable;
             string Exponente;
-            string ExponenteFrac;
 
             char[] caracteres;
 
             Constante = Regex.Match(Monomio, "-?[0-9]{1,}").Value;
             Variable = Regex.Match(Monomio, "[a-z]").Value;
-            Exponente = Regex.Match(Monomio, "\\^-?[0-9]\\/?[0-9]*").Value;
+            Exponente = Regex.Replace(Regex.Match(Monomio, "\\^-?[0-9]\\/?[0-9]*").Value, "\\^", "");
 
             if (Exponente == "")
             {
@@ -192,6 +225,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Formulas
             Monomio = $"{Constante}{VariableAInsertar}{Variable}^{Exponente}";
 
             caracteres = Monomio.ToCharArray();
+
+            Array.Sort(caracteres);
 
             return new String(caracteres);
         }

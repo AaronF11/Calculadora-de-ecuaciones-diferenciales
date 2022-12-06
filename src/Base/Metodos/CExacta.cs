@@ -49,9 +49,19 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             dxMonomios.Clear();
             dyMonomios.Clear();
 
+
+            if (ExprMonomios.IsMatch(dx) &&
+                ExprMonomios.IsMatch(dy))
+            {
+                dxCoincidencia = ExprMonomios.Matches(dx);
+                dyCoincidencia = ExprMonomios.Matches(dy);
+            }
+            else
+            {
+                return;
+            }
+
             // Obtener constantes
-            dxCoincidencia = ExprMonomios.Matches(dx);
-            dyCoincidencia = ExprMonomios.Matches(dy);
 
             // Obtener constantes de dx
             foreach (Match Coincidencia in dxCoincidencia)
@@ -79,7 +89,15 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
             PartesEcuacion = new List<string>();
 
             // Partir la ecuación en coincidencias
-            ColeccionPartesEcuacion = ExprPartes.Matches(Ecuacion);
+
+            if (ExprPartes.IsMatch(Ecuacion))
+            {
+                ColeccionPartesEcuacion = ExprPartes.Matches(Ecuacion);
+            }
+            else
+            {
+                return;
+            }
 
             foreach (Match Coincidencia in ColeccionPartesEcuacion)
             {
@@ -139,7 +157,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 }
                 else
                 {
-                    dxIntegrados.Add(CIntegral.Integrar(monomio));
+                    dxIntegrados.Add(CIntegral.Integrar(monomio, ""));
                 }
             }
 
@@ -154,7 +172,7 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
                 }
                 else
                 {
-                    dyIntegrados.Add(CIntegral.Integrar(monomio));
+                    dyIntegrados.Add(CIntegral.Integrar(monomio, ""));
                 }
             }
 
@@ -182,8 +200,8 @@ namespace Calculadora_de_ecuaciones_diferenciales.src.Base.Mrtodos
 
             Debug.Print($"IMdx: {IMdx}, INdy: {INdy}, IDIMdx: {IDIMdx}");
 
-                return $"{IMdx}{INdy}+C";
-            }
+            return $"{IMdx}{INdy}+C";
+        }
 
         public override DialogResult ValidarEcuacion()
         {
