@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -340,9 +341,22 @@ namespace Calculadora_de_ecuaciones_diferenciales
         //---------------------------------------------------------------------
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
+
+            Debug.Print($"{CDerivada.DerivacionPotencia("8xy", "x")}");
+            Debug.Print($"{CDerivada.DerivacionPotencia("8xy", "y")}");
+
+            Debug.Print($"{CIntegral.Integrar("8xy", "y")}");
+
             // Validar si la entrada es vacia
             if (TxtResultado.Text == String.Empty) return;
-            
+
+            if (!Regex.IsMatch(TxtResultado.Text, "\\(.*?\\)(dx|dy)(-|\\+)\\(.*?\\)(dx|dy)=0"))
+            {
+                MessageBox.Show("Introduce una ED Exacta de la forma M(x,y)dx (-|+) N(x,y)dy=0",
+                    "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             // Enviar ecuación diferencial exacta a 
             // TextBox secundario
             TxtEcuacionInicial.Text = TxtResultado.Text;
@@ -359,7 +373,7 @@ namespace Calculadora_de_ecuaciones_diferenciales
                 MessageBox.Show("La ecuación introducida no es exacta");
                 return;
             }
-            
+
             TxtResultado.Text = Exacta.ResolverEcuacion();
         }
 
